@@ -181,7 +181,7 @@ class Simple extends React.Component {
             const rotationIndex = this.particleParameters.indexOf(particleParameter);
             let particleRotation = particleRotations[rotationIndex];
             if (particleRotation == null) {
-              particleRotation = new THREE.Euler(Math.random() * .006, Math.random() * .006, Math.random() * .006);
+              particleRotation = new THREE.Euler(Math.random() * 0.1, Math.random() * 0.1, Math.random() * 6);
               particleRotations.push(particleRotation);
             }
 

@@ -126,7 +126,7 @@ class Simple extends React.Component {
       const deltaTime = this.renderClock.getDelta();
       // Vertices
       const newVertices = this.state.particleVertices.map((vertex) => {
-        vertex.z += 0.3 * deltaTime * (window.innerWidth*0.5/2 - this.props.cursorPosition.x);
+        vertex.z += 0.3 * deltaTime * (window.innerWidth*0.75/2 - this.props.cursorPosition.x);
         return vertex;
       })
 
@@ -204,7 +204,7 @@ class Simple extends React.Component {
 
     render() {
 
-        const width = window.innerWidth*0.5; // canvas width
+        const width = window.innerWidth*0.75; // canvas width
         const height = window.innerHeight; // canvas height
 
         const particles = this.particleSystem.map((particle) => {

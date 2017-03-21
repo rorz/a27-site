@@ -71,7 +71,6 @@ class Simple extends React.Component {
 
         this.state = {
             cubeRotation: new THREE.Euler(),
-            canUseDOM: ExecutionEnvironment.canUseDOM,
             particleVertices: null,
             particleRotations: null,
         };
@@ -205,10 +204,6 @@ class Simple extends React.Component {
 
     render() {
 
-        if (!this.state.canUseDOM) {
-            return null;
-        }
-
         const width = window.innerWidth; // canvas width
         const height = window.innerHeight; // canvas height
 
@@ -235,7 +230,27 @@ class Simple extends React.Component {
 }
 
 export default class Index extends React.Component {
+
+    constructor(props) {
+      super(props)
+      this.state = {
+        canUseDOM: ExecutionEnvironment.canUseDOM,
+      }
+    }
+
     render() {
+
+      const canUseDOM = this.state.canUseDOM;
+      let canvas = null
+
+      if (canUseDOM) {
+        canvas = (
+        <ReactCursorPosition>
+          <Simple/>
+        </ReactCursorPosition>
+      )
+      }
+
         return (
             <div>
               <Helmet title={config.siteTitle} meta={[
@@ -247,9 +262,7 @@ export default class Index extends React.Component {
                         "content": "sample, something"
                 }
               ]}/>
-              <ReactCursorPosition>
-                <Simple/>
-              </ReactCursorPosition>
+              {canvas}
                 <h1>
                   Hi people
                 </h1>

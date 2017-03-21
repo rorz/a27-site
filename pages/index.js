@@ -18,6 +18,10 @@ function NewParticlePos() {
   return (2*Math.random() - 1) * ParticleCount;
 }
 
+function NewRotation(x, y, z) {
+  return new THREE.Euler(x,y,z);
+}
+
 class Starfield extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -38,37 +42,27 @@ class Starfield extends React.Component {
 
         this.particleParameters = [
             [
-                [
-                    1.0, 0.2, 0.5
-                ],
+                [1.0, 0.2, 0.5],
                 sprite2,
                 3
             ],
             [
-                [
-                    0.95, 0.1, 0.5
-                ],
+                [0.95, 0.1, 0.5],
                 sprite3,
                 15
             ],
             [
-                [
-                    0.90, 0.05, 0.5
-                ],
+                [0.90, 0.05, 0.5],
                 sprite1,
                 7
             ],
             [
-                [
-                    0.85, 0, 0.5
-                ],
+                [0.85, 0, 0.5],
                 sprite5,
                 8
             ],
             [
-                [
-                    0.80, 0, 0.5
-                ],
+                [0.80, 0, 0.5],
                 sprite4,
                 5
             ]
@@ -95,31 +89,6 @@ class Starfield extends React.Component {
               })
             }
         };
-    }
-
-    animateParticles() {
-        for (let i = 0; i < this.state.particleSystem.length; i++) {
-
-            let particleBlock = this.particleSystem[i];
-
-            var verts = particleBlock.geometry.vertices;
-            for (let ii = 0; ii < verts.length; ii++) {
-                var vert = verts[ii];
-                if (vert.z < -200) {
-                    vert.z = Math.random() * 400 - 200;
-                }
-                vert.z = vert.z + (0.2 * deltaTime);
-                // vert.y = vert.y - (lastScrollY * 0.002);
-            }
-            particleBlock.geometry.verticesNeedUpdate = true;
-
-            particleBlock.rotation.y -= .005 * deltaTime;
-            particleBlock.position.y = lastScrollY * 0.2 * parallaxVals[i];
-            console.log('particle block: ' + i);
-            particleBlock.rotation.x = .02 * mouseY * 0.01 * parallaxVals[i];
-            particleBlock.rotation.y = .01 * mouseX * 0.01 * parallaxVals[i];
-
-        }
     }
 
     updateParticles(callback) {

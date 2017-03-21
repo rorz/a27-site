@@ -12,6 +12,12 @@ import * as THREE from 'three';
 import ReactDOM from 'react-dom';
 // ** REACT THREE ** //
 
+const ParticleCount = 200;
+
+function NewParticlePos() {
+  return (2*Math.random() - 1) * ParticleCount;
+}
+
 class Simple extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -30,7 +36,6 @@ class Simple extends React.Component {
         const sprite4 = textureLoader.load("./snowflake-4.png");
         const sprite5 = textureLoader.load("./snowflake-5.png");
 
-        this.particleCount = 200;
         this.particleParameters = [
             [
                 [
@@ -126,6 +131,9 @@ class Simple extends React.Component {
       const deltaTime = this.renderClock.getDelta();
       // Vertices
       const newVertices = this.state.particleVertices.map((vertex) => {
+        if (vertex.z < (-2 * ParticleCount) || vertex.z > (ParticleCount)) {
+          vertex.z = NewParticlePos();
+        }
         vertex.z += 0.3 * deltaTime * (window.innerWidth*0.75/2 - this.props.cursorPosition.x);
         return vertex;
       })
@@ -151,11 +159,11 @@ class Simple extends React.Component {
 
           geometryVertices = [];
 
-          for (let i = 0; i < this.particleCount; i++) {
+          for (let i = 0; i < ParticleCount; i++) {
               var vertex = new THREE.Vector3();
-              vertex.x = (2*Math.random() - 1) * this.particleCount;
-              vertex.y = (2*Math.random() - 1) * this.particleCount;
-              vertex.z = (2*Math.random() - 1) * this.particleCount;
+              vertex.x = NewParticlePos();
+              vertex.y = NewParticlePos();
+              vertex.z = NewParticlePos();
               geometryVertices.push(vertex);
           }
         }
@@ -173,7 +181,7 @@ class Simple extends React.Component {
             const rotationIndex = this.particleParameters.indexOf(particleParameter);
             let particleRotation = particleRotations[rotationIndex];
             if (particleRotation == null) {
-              particleRotation = new THREE.Euler(Math.random() * 6, Math.random() * 6, Math.random() * 6);
+              particleRotation = new THREE.Euler(Math.random() * .006, Math.random() * .006, Math.random() * .006);
               particleRotations.push(particleRotation);
             }
 

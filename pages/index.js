@@ -127,7 +127,7 @@ class Simple extends React.Component {
       const deltaTime = this.renderClock.getDelta();
       // Vertices
       const newVertices = this.state.particleVertices.map((vertex) => {
-        vertex.z += 0.3 * deltaTime;
+        vertex.z += 0.3 * deltaTime * (window.innerWidth/2 - this.props.cursorPosition.x);
         return vertex;
       })
 

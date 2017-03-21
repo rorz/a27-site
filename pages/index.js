@@ -74,6 +74,8 @@ class Starfield extends React.Component {
             ]
         ];
 
+        this.parallaxValues = [2.0, 0.6, 1.2, 0.8, 0.9];
+
         this.state = {
             particleVertices: null,
             particleRotations: null,
@@ -126,15 +128,25 @@ class Starfield extends React.Component {
       // Vertices
       const newVertices = this.state.particleVertices.map((vertex) => {
         if (vertex.z < (-2 * ParticleCount) || vertex.z > (ParticleCount)) {
-          vertex.z = NewParticlePos();
+          vertex.z = NewParticlePos()*-2;
         }
-        vertex.z += 0.3 * deltaTime * (window.innerWidth*0.75/2 - this.props.cursorPosition.x);
+        vertex.z += 2 * deltaTime;
         return vertex;
       })
 
       // Block rotation
       const newRotations = this.state.particleRotations.map((rotation) => {
-        rotation.z -= 0.5 * deltaTime;
+
+        const rotationIndex = this.state.particleRotations.indexOf(rotation);
+        const parallax = this.parallaxValues[rotationIndex];
+
+        // Need to create a new Euler instead of directly modifying the old one
+        rotation = new THREE.Euler(
+          rotation.x = -(0.0001 * this.props.cursorPosition.y)*parallax,
+          rotation.y = -(0.0001 * this.props.cursorPosition.x)*parallax,
+          rotation.z = rotation.z
+        );
+
         return rotation
       })
 
@@ -164,11 +176,16 @@ class Starfield extends React.Component {
 
         let particleRotations = this.state.particleRotations;
         if (particleRotations == null) {
+          console.log("used null");
           particleRotations = [];
         }
 
         for (const particleParameter of this.particleParameters) {
-            const particleColor = particleParameter[0];
+
+            const colorBit = particleParameter[0];
+            const hslColorString = new String('hsl(%s, %s, %s)', colorBit[0], colorBit[1], colorBit[2])
+
+            const particleColor = new THREE.Color(hslColorString);
             const particleSprite = particleParameter[1];
             const particleSize = particleParameter[2];
 
@@ -177,16 +194,16 @@ class Starfield extends React.Component {
             if (particleRotation == null) {
               particleRotation = new THREE.Euler(Math.random() * 0.1, Math.random() * 0.1, Math.random() * 6);
               particleRotations.push(particleRotation);
+            } else {
+              // console.log(particleRotation.y)
             }
 
 
-            const particleFog = new THREE.FogExp2(0x000000, 0.0008);
-
             const particles = (
-                <points rotation={particleRotation}>
+                <points key={'pointBlock-'+rotationIndex} rotation={particleRotation}>
                   <geometry vertices={geometryVertices} // USE STATE OR OTHER
                     dynamic={true}/>
-                  <pointsMaterial size={particleSize} map={particleSprite} blending={THREE.AdditiveBlending} depthTest={false} transparent={true} color={particleColor} fog={particleFog}/>
+                  <pointsMaterial size={particleSize} map={particleSprite} blending={THREE.AdditiveBlending} depthTest={false} transparent={true} color={particleColor} />
                 </points>
             )
             tempParticleArray.push(particles);
@@ -217,7 +234,7 @@ class Starfield extends React.Component {
         return (
             <React3 mainCamera="camera" // this points to the perspectiveCamera which has the name set to "camera" below
               width={width} height={height} onAnimate={this._onAnimate}>
-              <scene>
+              <scene fog={new THREE.Fog(0x000000, 0.0008)}>
                 <perspectiveCamera name="camera" fov={70} aspect={width / height} near={1} far={1000} position={this.cameraPosition}/>
                 <directionalLight position={new THREE.Vector3(1, -1, 1)}/>
                 {particles}

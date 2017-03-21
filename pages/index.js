@@ -18,8 +18,20 @@ function NewParticlePos() {
   return (2*Math.random() - 1) * ParticleCount;
 }
 
+function NewPosition(x, y, z) {
+  return new THREE.Vector3(
+    x,
+    y,
+    z
+  );
+}
+
 function NewRotation(x, y, z) {
-  return new THREE.Euler(x,y,z);
+  return new THREE.Euler(
+    -x * 0.0001,
+    -y * 0.0001,
+    z
+  );
 }
 
 class Starfield extends React.Component {
@@ -71,17 +83,17 @@ class Starfield extends React.Component {
         this.parallaxValues = [2.0, 0.6, 1.2, 0.8, 0.9];
 
         this.state = {
-            particleVertices: null,
-            particleRotations: null,
+            particleVertices: null, // Individual Vertices
+            particleRotations: null, // Per block
+            particlePositions: null, // Per block
+            scrollPosition: 0,
+            cursorPosition: props.cursorPosition,
         };
+
+        this.handleScroll = this.handleScroll.bind(this);
 
         this._onAnimate = () => {
             // we will get this callback every frame
-
-            // pretend cubeRotation is immutable.
-            // this helps with updates and pure rendering.
-            // React will be sure that the rotation has now updated.
-            // this.animateParticles()
 
             if (this.state.particleVertices != null) {
               this.updateParticles(() => {
@@ -89,6 +101,26 @@ class Starfield extends React.Component {
               })
             }
         };
+    }
+
+    componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillMount() {
+      this.particleSystem = this.createParticleSystem();
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll(event) {
+      const scrollTop = event.srcElement.body.scrollTop;
+
+      this.setState({
+        scrollPosition: scrollTop,
+      })
     }
 
     updateParticles(callback) {
@@ -109,19 +141,35 @@ class Starfield extends React.Component {
         const rotationIndex = this.state.particleRotations.indexOf(rotation);
         const parallax = this.parallaxValues[rotationIndex];
 
-        // Need to create a new Euler instead of directly modifying the old one
-        rotation = new THREE.Euler(
-          rotation.x = -(0.0001 * this.props.cursorPosition.y)*parallax,
-          rotation.y = -(0.0001 * this.props.cursorPosition.x)*parallax,
-          rotation.z = rotation.z
-        );
+        // Need to create a new Euler instead of directly modifying the old one — SEE NewRotation() global for weightings
+        rotation = NewRotation(
+          this.props.cursorPosition.y*parallax,
+          this.props.cursorPosition.x*parallax,
+          rotation.z
+        )
 
         return rotation
       })
 
+      // Block repositioning
+      const newPositions = this.state.particlePositions.map((position) => {
+        const positionIndex = this.state.particlePositions.indexOf(position);
+        const parallax = this.parallaxValues[positionIndex];
+
+        position = NewPosition(
+          position.x,
+          this.state.scrollPosition*0.1,
+          position.z
+        );
+
+        return position;
+      })
+
+
       this.setState({
         particleVertices: newVertices,
         particleRotations: newRotations,
+        particlePositions: newPositions,
       }, callback())
     }
 
@@ -149,6 +197,12 @@ class Starfield extends React.Component {
           particleRotations = [];
         }
 
+        let particlePositions = this.state.particlePositions;
+        if (particlePositions == null) {
+          console.log("position null");
+          particlePositions = [];
+        }
+
         for (const particleParameter of this.particleParameters) {
 
             const colorBit = particleParameter[0];
@@ -160,16 +214,33 @@ class Starfield extends React.Component {
 
             const rotationIndex = this.particleParameters.indexOf(particleParameter);
             let particleRotation = particleRotations[rotationIndex];
+
             if (particleRotation == null) {
-              particleRotation = new THREE.Euler(Math.random() * 0.1, Math.random() * 0.1, Math.random() * 6);
+
+              let parallax = this.parallaxValues[rotationIndex];
+
+              particleRotation = NewRotation(
+                this.props.cursorPosition.y*parallax,
+                this.props.cursorPosition.x*parallax,
+                Math.random() * 6
+              )
+
               particleRotations.push(particleRotation);
-            } else {
-              // console.log(particleRotation.y)
+            }
+
+            let particlePosition = particlePositions[rotationIndex];
+
+            if (particlePosition == null) {
+              let parallax = this.parallaxValues[rotationIndex];
+
+              particlePosition = new THREE.Vector3(1,1,1);
+              particlePositions.push(particlePosition);
+
             }
 
 
             const particles = (
-                <points key={'pointBlock-'+rotationIndex} rotation={particleRotation}>
+                <points key={'pointBlock-'+rotationIndex} rotation={particleRotation} position={particlePosition}>
                   <geometry vertices={geometryVertices} // USE STATE OR OTHER
                     dynamic={true}/>
                   <pointsMaterial size={particleSize} map={particleSprite} blending={THREE.AdditiveBlending} depthTest={false} transparent={true} color={particleColor} />
@@ -181,13 +252,10 @@ class Starfield extends React.Component {
         this.setState({
           particleVertices: geometryVertices,
           particleRotations: particleRotations,
+          particlePositions: particlePositions,
         });
         return tempParticleArray;
 
-    }
-
-    componentWillMount() {
-      this.particleSystem = this.createParticleSystem();
     }
 
     render() {

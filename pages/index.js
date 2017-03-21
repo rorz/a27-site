@@ -18,7 +18,7 @@ function NewParticlePos() {
   return (2*Math.random() - 1) * ParticleCount;
 }
 
-class Simple extends React.Component {
+class Starfield extends React.Component {
     constructor(props, context) {
         super(props, context);
 
@@ -244,7 +244,7 @@ export default class Index extends React.Component {
       if (canUseDOM) {
         canvas = (
         <ReactCursorPosition>
-          <Simple/>
+          <Starfield/>
         </ReactCursorPosition>
       )
       }

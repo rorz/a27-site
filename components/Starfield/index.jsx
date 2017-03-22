@@ -128,6 +128,10 @@ export default class Starfield extends React.Component {
       y: event.y,
     };
 
+    if (mousePosition.x > 0 || mousePosition.y > 0) {
+      this.props.onInteraction();
+    }
+
     this.setState({
       mousePosition,
     });
@@ -300,3 +304,6 @@ export default class Starfield extends React.Component {
     );
   }
 }
+Starfield.propTypes = {
+  onInteraction: React.PropTypes.func.isRequired,
+};

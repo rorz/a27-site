@@ -10,15 +10,26 @@ import Starfield from '../components/Starfield';
 import './styles.scss';
 
 function StarfieldEnclosure(props) {
+  if (!props.hasInteracted) { // Haven't moved the mouse yet
+    return (
+      <div className={'starfield-enclosure'}>
+        {props.children}
+        <div className={'starfield-blackout'} />
+        <StarterOverlay />
+      </div>
+    );
+  }
   return (
     <div className={'starfield-enclosure'}>
       {props.children}
+      <div className={'starfield-blackout hide'} />
       <StarfieldOverlay />
     </div>
   );
 }
 StarfieldEnclosure.propTypes = {
   children: React.PropTypes.element.isRequired,
+  hasInteracted: React.PropTypes.bool.isRequired,
 };
 
 function StarfieldOverlay() {
@@ -29,12 +40,21 @@ function StarfieldOverlay() {
   );
 }
 
+function StarterOverlay() {
+  return (
+    <div className="starfield-overlay">
+      <h2 className="blink_me">MOVE YOUR MOUSE</h2>
+    </div>
+  );
+}
+
 export default class Index extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       canUseDOM: ExecutionEnvironment.canUseDOM,
+      hasInteracted: false,
     };
   }
 
@@ -44,7 +64,7 @@ export default class Index extends React.Component {
 
     if (canUseDOM) {
       canvas = (
-        <Starfield />
+        <Starfield onInteraction={() => this.setState({ hasInteracted: true })} />
       );
     }
 
@@ -61,7 +81,7 @@ export default class Index extends React.Component {
             },
           ]}
         />
-        <StarfieldEnclosure>
+        <StarfieldEnclosure hasInteracted={this.state.hasInteracted} >
           {canvas}
         </StarfieldEnclosure>
         <h1>

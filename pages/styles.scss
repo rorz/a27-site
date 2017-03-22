@@ -26,7 +26,7 @@
 }
 
 .starfield-overlay h1 {
-  font-family: 'Righteous';
+  font-family: 'Righteous', Arial;
   color: rgba(255, 255, 255, .9);
   font-size: 3rem;
   padding: 0 10px;
@@ -41,6 +41,36 @@
   -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.starfield-overlay h2 {
+  font-family: 'Bitter', Courier;
+  color: #DF5E61;
+  font-size: 1.7rem;
+  padding: 0 10px;
+
+  text-decoration: normal;
+  text-align: center;
+}
+
+.blink_me {
+  animation: blinker 3s ease-in-out infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0.3; }
+}
+
+.starfield-blackout {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  transition:.8s opacity;
+  background-color: #222;
+}
+
+.starfield-blackout.hide {
+  opacity: 0;
 }
 
 /* CRT */

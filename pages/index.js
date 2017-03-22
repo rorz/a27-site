@@ -184,7 +184,7 @@ class Starfield extends React.Component {
 
         position = NewPosition(
           position.x,
-          this.state.scrollPosition*0.1,
+          this.state.scrollPosition*0.1*parallax,
           position.z
         );
 

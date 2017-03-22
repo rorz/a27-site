@@ -283,7 +283,7 @@
 }
 
 .switch:checked ~ .starfield-enclosure {
-  animation: turn-on 4s linear;
+  animation: turn-on 2.8s ease-out;
   animation-fill-mode: forwards;
 }
 

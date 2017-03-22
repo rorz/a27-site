@@ -24,7 +24,7 @@ StarfieldEnclosure.propTypes = {
 function StarfieldOverlay() {
   return (
     <div className="starfield-overlay">
-      <h1>HELLO</h1>
+      <h1>Apollo 27</h1>
     </div>
   );
 }

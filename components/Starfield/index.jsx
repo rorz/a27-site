@@ -215,9 +215,9 @@ export default class Starfield extends React.Component {
 
     this.particleParameters.forEach((particleParameter) => {
       const colorBit = particleParameter[0];
-      const hslColorString = String('hsl(%s, %s, %s)', colorBit[0], colorBit[1], colorBit[2]);
+      const particleColor = new THREE.Color();
+      particleColor.setHSL(colorBit[0], colorBit[1], colorBit[2]);
 
-      const particleColor = new THREE.Color(hslColorString);
       const particleSprite = particleParameter[1];
       const particleSize = particleParameter[2];
 

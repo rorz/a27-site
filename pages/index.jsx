@@ -9,6 +9,8 @@ import Starfield from '../components/Starfield';
 
 import './styles.scss';
 
+import mouseIcon from './mouse-icon.svg';
+
 function StarfieldEnclosure(props) {
   if (!props.hasInteracted) { // Haven't moved the mouse yet
     return (
@@ -42,8 +44,11 @@ function StarfieldOverlay() {
 
 function StarterOverlay() {
   return (
-    <div className="starfield-overlay">
-      <h2 className="blink_me">MOVE YOUR MOUSE</h2>
+    <div className="starfield-overlay blink_me">
+      <h2>MOVE YOUR MOUSE</h2>
+      <object className="mouseIcon" type="image/svg+xml" data={mouseIcon} width={80}>
+        Mouse Icon
+      </object>
     </div>
   );
 }

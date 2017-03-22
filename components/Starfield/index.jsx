@@ -279,22 +279,24 @@ export default class Starfield extends React.Component {
 
 
     return (
-      <React3
-        mainCamera="camera" // points to the perspectiveCamera; name set to "camera" below
-        width={width} height={height} onAnimate={this.onAnimate}
-      >
-        <scene fog={new THREE.Fog(0x000000, 0.0008)}>
-          <perspectiveCamera
-            name="camera"
-            fov={70}
-            aspect={width / height}
-            near={1} far={1000}
-            position={this.cameraPosition}
-          />
-          <directionalLight position={new THREE.Vector3(1, -1, 1)} />
-          {particles}
-        </scene>
-      </React3>
+      <div className="starfield-canvas">
+        <React3
+          mainCamera="camera" // points to the perspectiveCamera; name set to "camera" below
+          width={width} height={height} onAnimate={this.onAnimate}
+        >
+          <scene fog={new THREE.Fog(0x000000, 0.0008)}>
+            <perspectiveCamera
+              name="camera"
+              fov={70}
+              aspect={width / height}
+              near={1} far={1000}
+              position={this.cameraPosition}
+            />
+            <directionalLight position={new THREE.Vector3(1, -1, 1)} />
+            {particles}
+          </scene>
+        </React3>
+      </div>
     );
   }
 }

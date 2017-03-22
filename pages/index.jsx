@@ -9,16 +9,25 @@ import Starfield from '../components/Starfield';
 
 import './styles.scss';
 
-function StarFieldEnclosure(props) {
+function StarfieldEnclosure(props) {
   return (
     <div className={'starfield-enclosure'}>
       {props.children}
+      <StarfieldOverlay />
     </div>
   );
 }
-StarFieldEnclosure.propTypes = {
+StarfieldEnclosure.propTypes = {
   children: React.PropTypes.element.isRequired,
 };
+
+function StarfieldOverlay() {
+  return (
+    <div className="starfield-overlay">
+      <h1>HELLO</h1>
+    </div>
+  );
+}
 
 export default class Index extends React.Component {
 
@@ -52,12 +61,12 @@ export default class Index extends React.Component {
             },
           ]}
         />
-        <StarFieldEnclosure>
+        <StarfieldEnclosure>
           {canvas}
-        </StarFieldEnclosure>
+        </StarfieldEnclosure>
         <h1>
-                Hi Chris
-              </h1>
+          Hi Chris
+        </h1>
       </div>
     );
   }

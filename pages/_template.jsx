@@ -14,6 +14,12 @@ module.exports = React.createClass({
     }
   },
   render () {
+    // Determine if it's the homepage
+    if (this.props.location.pathname === '/') {
+      return (<div>
+        {this.props.children}
+      </div>)
+    }
     return (
       <div>
         <Headroom
@@ -42,17 +48,17 @@ module.exports = React.createClass({
             </Link>
           </Container>
         </Headroom>
-        {/*
-          <Container
+
+        <Container
           style={{
-          maxWidth: 960,
-          padding: `${rhythm(1)} ${rhythm(3/4)}`,
-          paddingTop: 0,
+            maxWidth: 960,
+            padding: `${rhythm(1)} ${rhythm(3/4)}`,
+            paddingTop: 0,
           }}
-          >
-        */}
-        {this.props.children}
-        {/*</Container>*/}
+        >
+
+          {this.props.children}
+        </Container>
       </div>
     )
   },

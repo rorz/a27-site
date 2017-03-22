@@ -139,7 +139,6 @@ class Starfield extends React.Component {
     }
 
     handleMouseMove(event) {
-      console.log(event);
       const mousePosition = {
         x: event.x,
         y: event.y,

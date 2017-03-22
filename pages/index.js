@@ -4,13 +4,14 @@ import {prefixLink} from 'gatsby-helpers'
 import Helmet from 'react-helmet'
 import {config} from 'config'
 import ExecutionEnvironment from 'exenv'; // Environment checking for universal apps
-import ReactCursorPosition from 'react-cursor-position';
 
 // ** REACT THREE ** //
 import React3 from 'react-three-renderer';
 import * as THREE from 'three';
 import ReactDOM from 'react-dom';
 // ** REACT THREE ** //
+
+import './styles.scss';
 
 const ParticleCount = 200;
 
@@ -32,6 +33,14 @@ function NewRotation(x, y, z) {
     -y * 0.0001,
     z
   );
+}
+
+function StarFieldEnclosure(props) {
+  return (
+    <div className={'starfield-enclosure'}>
+      {props.children}
+    </div>
+  )
 }
 
 class Starfield extends React.Component {
@@ -87,10 +96,14 @@ class Starfield extends React.Component {
             particleRotations: null, // Per block
             particlePositions: null, // Per block
             scrollPosition: 0,
-            cursorPosition: props.cursorPosition,
+            mousePosition: {
+              x: 0,
+              y: 0,
+            },
         };
 
         this.handleScroll = this.handleScroll.bind(this);
+        this.handleMouseMove = this.handleMouseMove.bind(this);
 
         this._onAnimate = () => {
             // we will get this callback every frame
@@ -105,6 +118,7 @@ class Starfield extends React.Component {
 
     componentDidMount() {
       window.addEventListener('scroll', this.handleScroll);
+      window.addEventListener('mousemove', this.handleMouseMove);
     }
 
     componentWillMount() {
@@ -113,6 +127,7 @@ class Starfield extends React.Component {
 
     componentWillUnmount() {
       window.removeEventListener('scroll', this.handleScroll);
+      window.removeEventListener('mousemove', this.handleMouseMove);
     }
 
     handleScroll(event) {
@@ -120,6 +135,18 @@ class Starfield extends React.Component {
 
       this.setState({
         scrollPosition: scrollTop,
+      })
+    }
+
+    handleMouseMove(event) {
+      console.log(event);
+      const mousePosition = {
+        x: event.x,
+        y: event.y,
+      }
+
+      this.setState({
+        mousePosition: mousePosition,
       })
     }
 
@@ -143,8 +170,8 @@ class Starfield extends React.Component {
 
         // Need to create a new Euler instead of directly modifying the old one — SEE NewRotation() global for weightings
         rotation = NewRotation(
-          this.props.cursorPosition.y*parallax,
-          this.props.cursorPosition.x*parallax,
+          this.state.mousePosition.y*parallax,
+          this.state.mousePosition.x*parallax,
           rotation.z
         )
 
@@ -220,8 +247,8 @@ class Starfield extends React.Component {
               let parallax = this.parallaxValues[rotationIndex];
 
               particleRotation = NewRotation(
-                this.props.cursorPosition.y*parallax,
-                this.props.cursorPosition.x*parallax,
+                this.state.mousePosition.y*parallax,
+                this.state.mousePosition.x*parallax,
                 Math.random() * 6
               )
 
@@ -260,7 +287,7 @@ class Starfield extends React.Component {
 
     render() {
 
-        const width = window.innerWidth*0.75; // canvas width
+        const width = window.innerWidth; // canvas width
         const height = window.innerHeight; // canvas height
 
         const particles = this.particleSystem.map((particle) => {
@@ -297,9 +324,7 @@ export default class Index extends React.Component {
 
       if (canUseDOM) {
         canvas = (
-        <ReactCursorPosition>
           <Starfield/>
-        </ReactCursorPosition>
       )
       }
 
@@ -314,7 +339,9 @@ export default class Index extends React.Component {
                         "content": "sample, something"
                 }
               ]}/>
-              {canvas}
+              <StarFieldEnclosure>
+                {canvas}
+              </StarFieldEnclosure>
                 <h1>
                   Hi people
                 </h1>

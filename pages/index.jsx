@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+// import { Link } from 'react-router';
+// import { prefixLink } from 'gatsby-helpers';
 import Helmet from 'react-helmet';
 import { config } from 'config';
 import ExecutionEnvironment from 'exenv'; // Environment checking for universal apps
@@ -16,6 +16,9 @@ function StarFieldEnclosure(props) {
     </div>
   );
 }
+StarFieldEnclosure.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};
 
 export default class Index extends React.Component {
 

@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router';
 // import { prefixLink } from 'gatsby-helpers';
+import { Container } from 'react-responsive-grid'
 import Helmet from 'react-helmet';
 import { config } from 'config';
 import ExecutionEnvironment from 'exenv'; // Environment checking for universal apps
@@ -53,6 +54,16 @@ function StarterOverlay() {
   );
 }
 
+function IntroPane() {
+  return (
+    <div className="section red">
+      <div className="intro-pane">
+        <h2>Let us propell your idea<br />to the stratosphere.</h2>
+      </div>
+    </div>
+  );
+}
+
 export default class Index extends React.Component {
 
   constructor(props) {
@@ -92,9 +103,7 @@ export default class Index extends React.Component {
             {canvas}
           </StarfieldEnclosure>
         </div>
-        <h1>
-          Hi Chris
-        </h1>
+        <IntroPane />
       </div>
     );
   }

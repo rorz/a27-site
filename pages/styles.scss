@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Righteous|Bitter:400,400i,700');
 
+$max-width: 1000px;
+
 .starfield-enclosure {
     min-height: 100vh;
     min-width: 100vw;
@@ -74,6 +76,42 @@
 
 .starfield-blackout.hide {
   opacity: 0;
+}
+
+/* INTRO */
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.red {
+  background-color: #ff4242;
+}
+
+.intro-pane {
+  max-width: $max-width;
+  padding: 1rem 0 4rem;
+  background-color: #888;
+  flex: 1;
+  flex-direction: row;
+
+}
+
+.intro-pane h2 {
+  background-color: #fff;
+  color: #ff4242;
+  display: inline-block;
+  font-family: 'Lato', 'Roboto', Helvetica, sans-serif;
+  padding: .7rem;
+  font-size: 2rem;
+  text-decoration: normal;
+  text-align: left;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
 }
 
 /* CRT */
@@ -215,7 +253,7 @@
   pointer-events: none;
 }
 
-#switch:checked ~ .starfield-enclosure::after {
+.switch:checked ~ .starfield-enclosure::after {
   animation: flicker 0.15s infinite;
 }
 

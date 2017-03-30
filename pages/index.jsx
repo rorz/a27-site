@@ -7,6 +7,7 @@ import { config } from 'config';
 import ExecutionEnvironment from 'exenv'; // Environment checking for universal apps
 
 import Starfield from '../components/Starfield';
+import Typewriter from '../components/react-typewriter/react/Typewriter';
 
 import './styles.scss';
 
@@ -101,6 +102,12 @@ export default class Index extends React.Component {
           <input type="checkbox" className="switch" checked={this.state.hasInteracted} readOnly />
           <StarfieldEnclosure hasInteracted={this.state.hasInteracted} >
             {canvas}
+            <Typewriter
+              speed={88}
+              tag="pre"
+              text={['Digital design and consulting.', 'Creators of compelling web experiences.', 'Made with love in London.']}
+              randomSpeed
+            />
           </StarfieldEnclosure>
         </div>
         <IntroPane />

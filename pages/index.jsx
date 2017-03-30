@@ -42,8 +42,9 @@ function StarfieldOverlay() {
       <h1>Apollo 27</h1>
       <TypistCycle
         content={['Digital design and consulting.', 'Creators of compelling interactive experiences.', 'Made in the UK.']}
-        numberOfCycles={1}
+        numberOfCycles={-1}
         segmentDelay={0.8}
+        className="starfield-byline"
       />
     </div>
   );

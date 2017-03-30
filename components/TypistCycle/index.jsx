@@ -46,13 +46,26 @@ export default class TypistCycle extends React.Component {
     const typistKey = `typist-${this.state.currentLine}:${this.state.cyclesCompleted}`;
 
     return (
-      <Typist key={typistKey} className="starfield-byline" onTypingDone={() => callback()}>
+      <Typist
+        key={typistKey}
+        onTypingDone={() => callback()}
+
+        className={this.props.className}
+        avgTypingDelay={this.props.avgTypingDelay}
+        stdTypingDelay={this.props.stdTypingDelay}
+        startDelay={this.props.startDelay}
+        cursor={this.props.cursor}
+        onCharacterTyped={this.props.onCharacterTyped}
+        onLineTyped={this.props.onLineTyped}
+        delayGenerator={this.props.delayGenerator}
+      >
         {lineToPrint}
       </Typist>
     );
   }
 }
 TypistCycle.propTypes = {
+  ...Typist.propTypes,
   numberOfCycles: React.PropTypes.number,
   content: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
   segmentDelay: React.PropTypes.number,

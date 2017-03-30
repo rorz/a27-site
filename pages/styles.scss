@@ -159,67 +159,67 @@ $max-width: 1000px;
 
 @keyframes flicker {
   0% {
-    opacity: 0.46686;
+    opacity: 0.46;
   }
   5% {
-    opacity: 0.35426;
+    opacity: 0.35;
   }
   10% {
-    opacity: 0.82602;
+    opacity: 0.82;
   }
   15% {
-    opacity: 0.27561;
+    opacity: 0.27;
   }
   20% {
-    opacity: 0.72682;
+    opacity: 0.72;
   }
   25% {
-    opacity: 0.43438;
+    opacity: 0.43;
   }
   30% {
-    opacity: 0.74639;
+    opacity: 0.74;
   }
   35% {
-    opacity: 0.11058;
+    opacity: 0.11;
   }
   40% {
-    opacity: 0.10798;
+    opacity: 0.10;
   }
   45% {
-    opacity: 0.95324;
+    opacity: 0.95;
   }
   50% {
-    opacity: 0.88595;
+    opacity: 0.88;
   }
   55% {
-    opacity: 0.47026;
+    opacity: 0.47;
   }
   60% {
-    opacity: 0.11885;
+    opacity: 0.11;
   }
   65% {
-    opacity: 0.05659;
+    opacity: 0.05;
   }
   70% {
-    opacity: 0.60154;
+    opacity: 0.60;
   }
   75% {
-    opacity: 0.45075;
+    opacity: 0.45;
   }
   80% {
-    opacity: 0.79138;
+    opacity: 0.79;
   }
   85% {
-    opacity: 0.21282;
+    opacity: 0.21;
   }
   90% {
-    opacity: 0.29963;
+    opacity: 0.29;
   }
   95% {
-    opacity: 0.72053;
+    opacity: 0.72;
   }
   100% {
-    opacity: 0.72603;
+    opacity: 0.73;
   }
 }
 .starfield-enclosure {
@@ -253,7 +253,9 @@ $max-width: 1000px;
   pointer-events: none;
 }
 
-.switch:checked ~ .starfield-enclosure::after {
+
+/* .switch:checked ~ .starfield-enclosure::after { */
+.starfield-enclosure::after {
   animation: flicker 0.15s infinite;
 }
 
@@ -314,7 +316,7 @@ $max-width: 1000px;
   height: 100%;
   border: none;
 }
-
+/*
 .switch ~ .starfield-enclosure > .screen {
   animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
   animation-fill-mode: forwards;
@@ -324,7 +326,8 @@ $max-width: 1000px;
   animation: turn-on 2.8s ease-out;
   animation-fill-mode: forwards;
 }
-
+*/
+/*
 @keyframes overlay-anim {
   0% {
     visibility: hidden;
@@ -353,3 +356,4 @@ $max-width: 1000px;
   animation: overlay-anim 5s linear;
   animation-fill-mode: forwards;
 }
+*/

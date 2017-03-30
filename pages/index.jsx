@@ -98,7 +98,7 @@ export default class Index extends React.Component {
           ]}
         />
         <div style={{ backgroundColor: '#222' }}>
-          <input type="checkbox" className="switch" checked={!this.state.hasInteracted} readOnly />
+          <input type="checkbox" className="switch" checked={this.state.hasInteracted} readOnly />
           <StarfieldEnclosure hasInteracted={this.state.hasInteracted} >
             {canvas}
           </StarfieldEnclosure>

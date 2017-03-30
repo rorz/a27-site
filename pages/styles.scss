@@ -45,7 +45,7 @@ $max-width: 1000px;
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
-.starfield-overlay h2 {
+.starfield-overlay h2, .starfield-byline {
   color: #FF7777;
   text-shadow: 0 0 1px rgba(255, 255, 255, .4), 0 0 2px rgba(255, 255, 255, .4), 0 0 3px rgba(255, 255, 255, .4), 0 0 4px rgba(210, 16, 25, .4), 0 0 7px rgba(210, 16, 25, .4), 0 0 8px rgba(210, 16, 25, .4), 0 0 10px rgba(210, 16, 25, .4);
   -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);

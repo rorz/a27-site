@@ -7,7 +7,7 @@ import { config } from 'config';
 import ExecutionEnvironment from 'exenv'; // Environment checking for universal apps
 
 import Starfield from '../components/Starfield';
-import Typewriter from '../components/react-typewriter/react/Typewriter';
+import Typist from 'react-typist';
 
 import './styles.scss';
 
@@ -36,10 +36,82 @@ StarfieldEnclosure.propTypes = {
   hasInteracted: React.PropTypes.bool.isRequired,
 };
 
+class TypistCycle extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.totalCycles = this.props.numberOfCycles;
+    this.isInfinite = (this.totalCycles < 0);
+
+    this.lineDidFinish = this.lineDidFinish.bind(this);
+
+    this.state = {
+      currentLine: 0,
+      cyclesCompleted: 0,
+    };
+  }
+
+  lineDidFinish() {
+    let nextLine = this.state.currentLine;
+    if (nextLine >= this.props.content.length) {
+      nextLine = 0;
+    } else {
+      nextLine += 1;
+    }
+
+    let nextCycle = this.state.cyclesCompleted;
+    if (nextLine === 0) {
+      nextCycle += 1;
+    }
+
+    setTimeout(() => {
+      this.setState({
+        currentLine: nextLine,
+        cyclesCompleted: nextCycle,
+      });
+    }, this.props.segmentDelay*1000);
+  }
+
+  render() {
+    const shouldCallback = (this.state.cyclesCompleted < this.totalCycles || (this.isInfinite));
+    const callback = shouldCallback ? this.lineDidFinish : null;
+
+    const lineToPrint = this.props.content[this.state.currentLine];
+
+    const typistKey = `typist-${this.state.currentLine}:${this.state.cyclesCompleted}`;
+
+    const typist = (
+      <Typist key={typistKey} className="starfield-byline" onTypingDone={() => callback()}>
+        {lineToPrint}
+      </Typist>
+    );
+
+    return (
+      <div>
+        {typist}
+      </div>
+    );
+  }
+}
+TypistCycle.propTypes = {
+  numberOfCycles: React.PropTypes.number,
+  content: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+  segmentDelay: React.PropTypes.number,
+};
+TypistCycle.defaultProps = {
+  numberOfCycles: 1,
+  segmentDelay: 0.44,
+};
+
 function StarfieldOverlay() {
   return (
     <div className="starfield-overlay">
       <h1>Apollo 27</h1>
+      <TypistCycle
+        content={['Digital design and consulting.', 'Creators of compelling interactive experiences.', 'Made in the UK.']}
+        numberOfCycles={1}
+        segmentDelay={0.8}
+      />
     </div>
   );
 }
@@ -102,12 +174,6 @@ export default class Index extends React.Component {
           <input type="checkbox" className="switch" checked={this.state.hasInteracted} readOnly />
           <StarfieldEnclosure hasInteracted={this.state.hasInteracted} >
             {canvas}
-            <Typewriter
-              speed={88}
-              tag="pre"
-              text={['Digital design and consulting.', 'Creators of compelling web experiences.', 'Made with love in London.']}
-              randomSpeed
-            />
           </StarfieldEnclosure>
         </div>
         <IntroPane />

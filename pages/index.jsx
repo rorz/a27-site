@@ -10,6 +10,7 @@ import Starfield from '../components/Starfield';
 import TypistCycle from '../components/TypistCycle';
 
 import './styles.scss';
+import '../node_modules/react-typist/dist/Typist.css';
 
 import mouseIcon from './mouse-icon.svg';
 
@@ -42,7 +43,7 @@ function StarfieldOverlay() {
       <h1>Apollo 27</h1>
       <TypistCycle
         content={['Digital design and consulting.', 'Creators of compelling interactive experiences.', 'Made in the UK.']}
-        numberOfCycles={-1}
+        numberOfCycles={1}
         segmentDelay={0.8}
         className="starfield-byline"
       />

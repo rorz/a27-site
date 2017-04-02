@@ -9,6 +9,8 @@ import ExecutionEnvironment from 'exenv'; // Environment checking for universal 
 import Starfield from '../components/Starfield';
 import TypistCycle from '../components/TypistCycle';
 
+import { StickyContainer, Sticky } from 'react-sticky';
+
 import './styles.scss';
 import '../node_modules/react-typist/dist/Typist.css';
 
@@ -66,8 +68,43 @@ function IntroPane() {
   return (
     <div className="section red">
       <div className="intro-pane">
-        <h2>Let us propell your idea<br />to the stratosphere.</h2>
+        <h2>We launch your project into the stars.</h2>
       </div>
+    </div>
+  );
+}
+
+function StickyNav() {
+
+  const navStyle = {
+    height: '8vh',
+    backgroundColor: 'white',
+    padding: '3rem',
+  };
+
+  return (
+    <Sticky>
+      <nav style={navStyle}>
+        <a>Option 1</a>
+        <a>Option 2</a>
+        <a>Option 3</a>
+      </nav>
+    </Sticky>
+  );
+}
+
+function ServicesPane() {
+  return (
+    <div className="section">
+      <h2>Services!</h2>
+    </div>
+  );
+}
+
+function ClientsPane() {
+  return (
+    <div className="section">
+      <h2>Clients!</h2>
     </div>
   );
 }
@@ -93,7 +130,7 @@ export default class Index extends React.Component {
     }
 
     return (
-      <div>
+      <StickyContainer>
         <Helmet
           title={config.siteTitle} meta={[
             {
@@ -111,10 +148,13 @@ export default class Index extends React.Component {
             {canvas}
           </StarfieldEnclosure>
         </div>
+        <StickyNav />
         <IntroPane />
-        <IntroPane />
-        <IntroPane />
-      </div>
+        <hr className="section-divider" />
+        <ServicesPane />
+        <hr className="section-divider" />
+        <ClientsPane />
+      </StickyContainer>
     );
   }
 }

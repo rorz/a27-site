@@ -1,10 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Righteous|Bitter:400,400i,700');
 
 $max-width: 1000px;
+$apollo-red: #ff4242;
 
 hr.section-divider {
   border-width: 10px;
   border-color: #eee;
+}
+
+nav.stickyNav {
+  height: 8vh;
+  background-color: white;
+  padding: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stickyNav .navItem {
+  color: $apollo-red;
+  padding: .6rem 0;
+  margin: 0 2rem;
+  border-bottom-color: red;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+.navItem.contact {
+  margin-left: auto;
+  background-color: $apollo-red;
+  color: white;
 }
 
 .starfield-enclosure {
@@ -96,7 +121,7 @@ hr.section-divider {
 }
 
 .section.red {
-  background-color: #ff4242;
+  background-color: $apollo-red;
 }
 
 .intro-pane {
@@ -110,7 +135,7 @@ hr.section-divider {
 
 .intro-pane h2 {
   background-color: #fff;
-  color: #ff4242;
+  color: $apollo-red;
   display: inline-block;
   font-family: 'Lato', 'Roboto', Helvetica, sans-serif;
   padding: .7rem;

@@ -87,7 +87,7 @@ function StickyNav() {
     >
       <Container>
         <nav className="stickyNav">
-          <a className="navItem">Solutions</a>
+          <a className="navItem active">Solutions</a>
           <a className="navItem">Services</a>
           <a className="navItem">Clients</a>
           <a className="navItem contact">Contact Us!</a>

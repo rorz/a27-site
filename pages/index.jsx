@@ -75,19 +75,30 @@ function IntroPane() {
 }
 
 function StickyNav() {
-
   const navStyle = {
     height: '8vh',
     backgroundColor: 'white',
-    padding: '3rem',
+    padding: '2.4rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
+  const itemStyle = {
+    padding: '.6rem 0',
+    margin: '0 2rem',
+    borderBottomColor: 'red',
+    borderBottomStyle: 'solid',
+    borderBottomWidth: '2px',
   };
 
   return (
     <Sticky>
       <nav style={navStyle}>
-        <a>Option 1</a>
-        <a>Option 2</a>
-        <a>Option 3</a>
+        <a style={itemStyle}>Our Solutions</a>
+        <a style={itemStyle}>What We Do</a>
+        <a style={itemStyle}>Clients</a>
+        <a style={{marginLeft: 'auto'}}>Contact Us!</a>
       </nav>
     </Sticky>
   );

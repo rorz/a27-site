@@ -21,6 +21,11 @@ nav.stickyNav {
   color: RGBA(255, 66, 66, 0.6);
   padding: .6rem 0;
   margin: 0 2rem;
+  cursor: pointer;
+}
+
+.stickyNav .navItem:hover {
+    color: RGBA(255, 66, 66, 1.0);
 }
 
 .navItem.active {

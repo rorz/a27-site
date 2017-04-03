@@ -1,20 +1,28 @@
 import React from 'react';
 // import { Link } from 'react-router';
 // import { prefixLink } from 'gatsby-helpers';
-import { Container } from 'react-responsive-grid'
+import { Container } from 'react-responsive-grid';
 import Helmet from 'react-helmet';
 import { config } from 'config';
 import ExecutionEnvironment from 'exenv'; // Environment checking for universal apps
 
+import { StickyContainer, Sticky } from 'react-sticky';
+
+import { Link, Element } from 'react-scroll';
+
 import Starfield from '../components/Starfield';
 import TypistCycle from '../components/TypistCycle';
-
-import { StickyContainer, Sticky } from 'react-sticky';
 
 import './styles.scss';
 import '../node_modules/react-typist/dist/Typist.css';
 
 import mouseIcon from './mouse-icon.svg';
+
+// const Scroll = require('react-scroll');
+//
+// const Link = Scroll.Link;
+// const Element = Scroll.Element;
+
 
 function StarfieldEnclosure(props) {
   if (!props.hasInteracted) { // Haven't moved the mouse yet
@@ -87,9 +95,39 @@ function StickyNav() {
     >
       <Container>
         <nav className="stickyNav">
-          <a className="navItem active">Solutions</a>
-          <a className="navItem">Services</a>
-          <a className="navItem">Clients</a>
+          <Link
+            activeClass="active"
+            className="navItem"
+            to="intro_pane"
+            spy
+            smooth
+            offset={-80}
+            duration={500}
+          >
+            Solutions
+          </Link>
+          <Link
+            activeClass="active"
+            className="navItem"
+            to="services_pane"
+            spy
+            smooth
+            offset={-80}
+            duration={500}
+          >
+            Services
+          </Link>
+          <Link
+            activeClass="active"
+            className="navItem"
+            to="clients_pane"
+            spy
+            smooth
+            offset={-80}
+            duration={500}
+          >
+            Clients
+          </Link>
           <a className="navItem contact">Contact Us!</a>
         </nav>
       </Container>
@@ -153,11 +191,17 @@ export default class Index extends React.Component {
           </StarfieldEnclosure>
         </div>
         <StickyNav />
-        <IntroPane />
+        <Element name="intro_pane" className="element">
+          <IntroPane />
+        </Element>
         <hr className="section-divider" />
-        <ServicesPane />
+        <Element name="services_pane" className="element">
+          <ServicesPane />
+        </Element>
         <hr className="section-divider" />
-        <ClientsPane />
+        <Element name="clients_pane" className="element">
+          <ClientsPane />
+        </Element>
       </StickyContainer>
     );
   }

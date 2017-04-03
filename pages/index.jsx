@@ -17,6 +17,7 @@ import './styles.scss';
 import '../node_modules/react-typist/dist/Typist.css';
 
 import mouseIcon from './mouse-icon.svg';
+import testShipIcon from './test-ship.png';
 
 // const Scroll = require('react-scroll');
 //
@@ -77,10 +78,41 @@ function IntroPane() {
     <div className="section red">
       <div className="intro-pane">
         <h2>We launch your project into the stars.</h2>
+        <p>
+          At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
+          Having primarily worked with start-ups,
+          we know how fast-paced and dynamic work needs to be.
+          We&apos;re also well-versed in positioning the content we create
+          towards the audience you need; whether it be investors, clients, or users.
+        </p>
+        <div className="columns">
+          <div className="solutionColumn">
+            <img alt="test" src={testShipIcon} width={200} />
+          </div>
+          <div className="solutionColumn">
+            <img alt="test" src={testShipIcon} width={200} />
+          </div>
+          <div className="solutionColumn">
+            <img alt="test" src={testShipIcon} width={200} />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+function WidthMaster(props) {
+  return (
+    <div className="sectionWidth">
+      <div className="sectionWidthChild">
+        {props.children}
+      </div>
+    </div>
+  );
+}
+WidthMaster.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};
 
 function StickyNav() {
   return (
@@ -93,7 +125,7 @@ function StickyNav() {
         boxShadow: '0 0 8px 0 rgba(0,0,0,.2), 0 0 4px 0 rgba(0,0,0,.19)',
       }}
     >
-      <Container>
+      <WidthMaster>
         <nav className="stickyNav">
           <Link
             activeClass="active"
@@ -130,7 +162,7 @@ function StickyNav() {
           </Link>
           <a className="navItem contact">Contact Us!</a>
         </nav>
-      </Container>
+      </WidthMaster>
     </Sticky>
   );
 }

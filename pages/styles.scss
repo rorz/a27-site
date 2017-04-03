@@ -3,6 +3,32 @@
 $max-width: 1000px;
 $apollo-red: #ff4242;
 
+div.sectionWidth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionWidth .sectionWidthChild {
+  width: 1000px
+}
+
+.columns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.columns .solutionColumn {
+  width: $max-width * 0.333;
+  padding: 2rem;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 hr.section-divider {
   border-width: 10px;
   border-color: #eee;
@@ -11,17 +37,29 @@ hr.section-divider {
 nav.stickyNav {
   height: 8vh;
   background-color: white;
-  padding: 2.4rem;
+  padding: 2.4rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .stickyNav .navItem {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: .05rem;
+  font-size: .8rem;
+  text-transform: uppercase;
   color: RGBA(255, 66, 66, 0.6);
   padding: .6rem 0;
   margin: 0 2rem;
   cursor: pointer;
+}
+
+.stickyNav .navItem:first-child {
+  margin-left: 0;
+}
+.stickyNav .navItem:last-child {
+  margin-right: 0;
 }
 
 .stickyNav .navItem:hover {
@@ -134,19 +172,19 @@ nav.stickyNav {
 }
 
 .intro-pane {
-  max-width: $max-width;
+  width: $max-width;
   padding: 1rem 0 4rem;
-  background-color: #888;
-  flex: 1;
-  flex-direction: row;
-
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .intro-pane h2 {
   background-color: #fff;
   color: $apollo-red;
   display: inline-block;
-  font-family: 'Lato', 'Roboto', Helvetica, sans-serif;
+  font-family: 'Open Sans', 'Roboto', Helvetica, sans-serif;
   padding: .7rem;
   font-size: 2rem;
   text-decoration: normal;
@@ -154,6 +192,18 @@ nav.stickyNav {
   -o-text-overflow: clip;
   text-overflow: clip;
   white-space: pre;
+}
+
+.intro-pane p {
+  background-color: #fff;
+  color: #444;
+  font-family: 'Open Sans', 'Roboto', Helvetica, sans-serif;
+  padding: .7rem;
+  font-size: .8rem;
+  text-decoration: normal;
+  text-align: left;
+  -o-text-overflow: clip;
+  text-overflow: clip;
 }
 
 /* CRT */

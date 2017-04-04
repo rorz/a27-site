@@ -3,6 +3,16 @@
 $max-width: 1000px;
 $apollo-red: #ff4242;
 
+$font-family-brand: 'Righteous', 'Roboto', Arial, sans-serif;
+$font-family-header: 'Open Sans', Helvetica, sans-serif;
+$font-family-body: 'Bitter', 'Roboto Slab', Georgia, serif;
+
+
+p {
+  font-family: $font-family-body;
+  color: #444;
+}
+
 div.sectionWidth {
   display: flex;
   align-items: center;
@@ -23,10 +33,29 @@ div.sectionWidth {
 .columns .solutionColumn {
   width: $max-width * 0.333;
   padding: 2rem;
-  background-color: green;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.solutionColumn h3 {
+  font-family: $font-family-header;
+  letter-spacing: 0.2rem;
+  font-size: 1.2rem;
+  color: $apollo-red;
+  margin-bottom: .4rem;
+}
+
+.intro-pane .solutionColumn p {
+  font-size: 0.8rem;
+  padding: 1rem;
+  line-height: 1.6rem;
+  padding-top: .2rem;
+}
+
+.blockContainer {
+  background-color: #fff;
 }
 
 hr.section-divider {
@@ -44,7 +73,7 @@ nav.stickyNav {
 }
 
 .stickyNav .navItem {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: $font-family-header;
   font-weight: 400;
   letter-spacing: .05rem;
   font-size: .8rem;
@@ -105,7 +134,7 @@ nav.stickyNav {
 }
 
 .starfield-overlay h1 {
-  font-family: 'Righteous', Arial;
+  font-family: $font-family-brand;
   color: rgba(255, 255, 255, .9);
   font-size: 3rem;
   padding: 0 10px;
@@ -192,18 +221,14 @@ nav.stickyNav {
   -o-text-overflow: clip;
   text-overflow: clip;
   white-space: pre;
+  margin-top: 3rem;
 }
 
 .intro-pane p {
-  background-color: #fff;
-  color: #444;
-  font-family: 'Open Sans', 'Roboto', Helvetica, sans-serif;
-  padding: .7rem;
-  font-size: .8rem;
-  text-decoration: normal;
-  text-align: left;
-  -o-text-overflow: clip;
-  text-overflow: clip;
+  padding: 4rem 3rem 3rem;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  text-align: center;
 }
 
 /* CRT */

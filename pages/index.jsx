@@ -144,7 +144,10 @@ WidthMaster.propTypes = {
   children: React.PropTypes.element.isRequired,
 };
 
-function StickyNav() {
+function StickyNav(props) {
+  const linkOffset = props.windowDimensions.height * -0.1;
+  console.log(`link offset: ${linkOffset}`);
+
   return (
     <Sticky
       style={{
@@ -163,7 +166,7 @@ function StickyNav() {
             to="intro_pane"
             spy
             smooth
-            offset={-80}
+            offset={linkOffset}
             duration={500}
           >
             Solutions
@@ -174,7 +177,7 @@ function StickyNav() {
             to="services_pane"
             spy
             smooth
-            offset={-80}
+            offset={linkOffset}
             duration={500}
           >
             Services
@@ -185,7 +188,7 @@ function StickyNav() {
             to="clients_pane"
             spy
             smooth
-            offset={-80}
+            offset={linkOffset}
             duration={500}
           >
             Clients
@@ -196,6 +199,9 @@ function StickyNav() {
     </Sticky>
   );
 }
+StickyNav.propTypes = {
+  windowDimensions: React.PropTypes.object.required,
+};
 
 function ServicesPane() {
   return (
@@ -272,7 +278,32 @@ export default class Index extends React.Component {
     this.state = {
       canUseDOM: ExecutionEnvironment.canUseDOM,
       hasInteracted: false,
+      windowDimensions: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
     };
+
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions.bind(this));
+  }
+
+  updateWindowDimensions() {
+    this.setState({
+      window: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+    });
   }
 
   render() {
@@ -304,7 +335,7 @@ export default class Index extends React.Component {
             {canvas}
           </StarfieldEnclosure>
         </div>
-        <StickyNav />
+        <StickyNav windowDimensions={this.state.windowDimensions} />
         <Element name="intro_pane" className="element">
           <IntroPane />
         </Element>

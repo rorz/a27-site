@@ -16,9 +16,14 @@ module.exports = React.createClass({
   render () {
     // Determine if it's the homepage
     if (this.props.location.pathname === '/') {
-      return (<div>
-        {this.props.children}
-      </div>)
+      return (
+        <div>
+          {this.props.children}
+          <footer className="siteFooter">
+            <p>Apollo27 is a trading name, &copy; 2017, find this on github</p>
+          </footer>
+        </div>
+      );
     }
     return (
       <div>

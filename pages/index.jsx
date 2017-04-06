@@ -18,6 +18,7 @@ import '../node_modules/react-typist/dist/Typist.css';
 
 import mouseIcon from './mouse-icon.svg';
 import testShipIcon from './test-ship.png';
+import testServiceIcon from './test-service-icon.png';
 
 // const Scroll = require('react-scroll');
 //
@@ -199,8 +200,60 @@ function StickyNav() {
 function ServicesPane() {
   return (
     <div className="section">
-      <h2>Services!</h2>
+      <div className="services-pane">
+        <h2>A mission-satisfying array of skillsets.</h2>
+        <div className="blockContainer">
+          <p>
+            At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
+            Having primarily worked with start-ups,
+            we know how fast-paced and dynamic work needs to be.
+            We&apos;re also well-versed in positioning the content we create
+            towards the audience you need; whether it be investors, clients, or users.
+          </p>
+          <div className="columns">
+            <div className="solutionColumn">
+              <img alt="test" src={testServiceIcon} width={160} />
+              <h3>
+                Planning Phase
+              </h3>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testServiceIcon} width={160} />
+              <h3>
+                Building Phase
+              </h3>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testServiceIcon} width={160} />
+              <h3>
+                Launch Phase
+              </h3>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="solutionColumn">
+              <img alt="test" src={testServiceIcon} width={160} />
+              <h3>
+                Planning Phase
+              </h3>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testServiceIcon} width={160} />
+              <h3>
+                Building Phase
+              </h3>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testServiceIcon} width={160} />
+              <h3>
+                Launch Phase
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   );
 }
 

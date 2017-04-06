@@ -20,7 +20,9 @@ module.exports = React.createClass({
         <div>
           {this.props.children}
           <footer className="siteFooter">
-            <p>Apollo27 is a trading name, &copy; 2017, find this on github</p>
+            <div className="footerContainer">
+              <p>Apollo27 is a trading name of Johnston Eek Ltd (Company No. 08277929), &copy; 2017.</p>
+            </div>
           </footer>
         </div>
       );

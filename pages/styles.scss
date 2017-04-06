@@ -245,8 +245,21 @@ footer.siteFooter {
   height: 10vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   background-color: #eee;
+}
+
+.siteFooter .footerContainer {
+  width: $max-width;
+  background-color: #fff;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.footerContainer p {
+  font-size: .7rem;
+  margin: 0;
 }
 
 

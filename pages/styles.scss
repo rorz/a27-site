@@ -125,10 +125,14 @@ nav.stickyNav {
 
 .starfield-canvas {
     position: absolute;
+    left: 0;
 }
 
 .starfield-overlay {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,6 +188,7 @@ nav.stickyNav {
     width: 100vw;
     transition: 0.8s opacity;
     background-color: #222;
+    left: 0;
 }
 
 .starfield-blackout.hide {
@@ -240,29 +245,26 @@ nav.stickyNav {
     text-align: center;
 }
 /* FOOTER */
-
 footer.siteFooter {
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #eee;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
 }
 
 .siteFooter .footerContainer {
-  width: $max-width;
-  background-color: #fff;
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-start;
+    width: $max-width;
+    background-color: #fff;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
 }
 
 .footerContainer p {
-  font-size: .7rem;
-  margin: 0;
+    font-size: 0.7rem;
+    margin: 0;
 }
-
-
 /* CRT */
 .switch {
     display: none;

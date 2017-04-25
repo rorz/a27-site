@@ -44,6 +44,7 @@ div.sectionWidth {
     margin-bottom: 0.4rem;
 }
 
+.services-pane .solutionColumn p,
 .intro-pane .solutionColumn p {
     font-size: 0.8rem;
     padding: 1rem;
@@ -57,6 +58,25 @@ div.sectionWidth {
 
 .services-pane .blockContainer {
     border: 8px solid $apollo-red;
+}
+
+.one-two {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.one-two div {
+  border: 8px solid $apollo-red;
+  width: 100%;
+}
+
+.one-two-icon {
+  width: 33%;
+}
+
+.one-two-para {
+  width: 67%;
 }
 
 hr.section-divider {
@@ -108,6 +128,16 @@ nav.stickyNav {
     margin-left: auto;
     background-color: $apollo-red;
     color: white;
+    padding: 0.6rem 0.5rem;
+    border-radius: .3rem;
+}
+
+.navItem.contact:hover {
+    color: $apollo-red;
+    background-color: white;
+    border-color: $apollo-red;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .starfield-enclosure {
@@ -250,21 +280,31 @@ footer.siteFooter {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eee;
+    background-color: #222;
 }
 
 .siteFooter .footerContainer {
     width: $max-width;
-    background-color: #fff;
+    background-color: #222;
     display: flex;
     align-items: baseline;
     justify-content: flex-start;
+    flex-direction: column;
 }
 
 .footerContainer p {
     font-size: 0.7rem;
     margin: 0;
+    color: white;
+    font-family: $font-family-header;
+    letter-spacing: 0.05rem;
 }
+
+.footerContainer a {
+    color: #eee;
+    font-weight: bold;
+}
+
 /* CRT */
 .switch {
     display: none;

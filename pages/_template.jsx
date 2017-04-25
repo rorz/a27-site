@@ -21,7 +21,8 @@ module.exports = React.createClass({
           {this.props.children}
           <footer className="siteFooter">
             <div className="footerContainer">
-              <p>Apollo27 is a trading name of Johnston Eek Ltd (Company No. 08277929), &copy; 2017.</p>
+              <p>Copyright Apollo27 Ltd &copy; 2017. All rights reserved unless otherwise specified. Powered by <a href="https://github.com/gatsbyjs/gatsby">GatsbyJS</a>.</p>
+              <p>Privacy Policy | Contact</p>
             </div>
           </footer>
         </div>

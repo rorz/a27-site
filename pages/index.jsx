@@ -77,59 +77,6 @@ function StarterOverlay() {
   );
 }
 
-function IntroPane() {
-  return (
-    <div className="section red">
-      <div className="intro-pane">
-        <h2>Guiding your business from <u>idea</u> to <u>fruition</u>.</h2>
-        <div className="blockContainer">
-          <p>
-            At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
-            Having primarily worked with start-ups,
-            we know how fast-paced and dynamic work needs to be.
-            We&apos;re also well-versed in positioning the content we create
-            towards the audience you need; whether it be investors, clients, or users.
-          </p>
-          <div className="columns">
-            <div className="solutionColumn">
-              <img alt="test" src={testShipIcon} width={200} />
-              <h3>
-                Planning Phase
-              </h3>
-              <p>
-                We take meticulous care over the planning of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it planned.
-              </p>
-            </div>
-            <div className="solutionColumn">
-              <img alt="test" src={testShipIcon} width={200} />
-              <h3>
-                Building Phase
-              </h3>
-              <p>
-                You take meticulous care over the building of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it built.
-              </p>
-            </div>
-            <div className="solutionColumn">
-              <img alt="test" src={testShipIcon} width={200} />
-              <h3>
-                Launch Phase
-              </h3>
-              <p>
-                I take meticulous care over the launching of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function WidthMaster(props) {
   return (
@@ -193,7 +140,7 @@ function StickyNav(props) {
           >
             Clients
           </Link>
-          <a className="navItem contact">Contact Us!</a>
+          <a className="navItem contact">Contact Us</a>
         </nav>
       </WidthMaster>
     </Sticky>
@@ -203,10 +150,64 @@ StickyNav.propTypes = {
   windowDimensions: React.PropTypes.object.required,
 };
 
-function ServicesPane() {
+function IntroPane() {
   return (
     <div className="section">
       <div className="services-pane">
+        <h2>Guiding your business from <u>idea</u> to <u>fruition</u>.</h2>
+        <div className="blockContainer">
+          <p>
+            At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
+            Having primarily worked with start-ups,
+            we know how fast-paced and dynamic work needs to be.
+            We&apos;re also well-versed in positioning the content we create
+            towards the audience you need; whether it be investors, clients, or users.
+          </p>
+          <div className="columns">
+            <div className="solutionColumn">
+              <img alt="test" src={testShipIcon} width={200} />
+              <h3>
+                Planning Phase
+              </h3>
+              <p>
+                We take meticulous care over the planning of your idea
+                and want to make sure it succeeds!
+                We won&apos;t stop at anything to see it planned.
+              </p>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testShipIcon} width={200} />
+              <h3>
+                Building Phase
+              </h3>
+              <p>
+                You take meticulous care over the building of your idea
+                and want to make sure it succeeds!
+                We won&apos;t stop at anything to see it built.
+              </p>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testShipIcon} width={200} />
+              <h3>
+                Launch Phase
+              </h3>
+              <p>
+                I take meticulous care over the launching of your idea
+                and want to make sure it succeeds!
+                We won&apos;t stop at anything to see it!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ServicesPane() {
+  return (
+    <div className="section red">
+      <div className="intro-pane">
         <h2>A mission-satisfying array of skillsets.</h2>
         <div className="blockContainer">
           <p>
@@ -266,7 +267,61 @@ function ServicesPane() {
 function ClientsPane() {
   return (
     <div className="section">
-      <h2>Clients!</h2>
+      <div className="services-pane">
+        <h2>Some things we&apos;ve built:</h2>
+        <div className="one-two">
+          <div className="one-two-icon">
+            <p>hallo</p>
+          </div>
+          <div className="one-two-para">
+            <p>hallo</p>
+          </div>
+        </div>
+        <div className="blockContainer">
+          <p>
+            At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
+            Having primarily worked with start-ups,
+            we know how fast-paced and dynamic work needs to be.
+            We&apos;re also well-versed in positioning the content we create
+            towards the audience you need; whether it be investors, clients, or users.
+          </p>
+          <div className="columns">
+            <div className="solutionColumn">
+              <img alt="test" src={testShipIcon} width={200} />
+              <h3>
+                Planning Phase
+              </h3>
+              <p>
+                We take meticulous care over the planning of your idea
+                and want to make sure it succeeds!
+                We won&apos;t stop at anything to see it planned.
+              </p>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testShipIcon} width={200} />
+              <h3>
+                Building Phase
+              </h3>
+              <p>
+                You take meticulous care over the building of your idea
+                and want to make sure it succeeds!
+                We won&apos;t stop at anything to see it built.
+              </p>
+            </div>
+            <div className="solutionColumn">
+              <img alt="test" src={testShipIcon} width={200} />
+              <h3>
+                Launch Phase
+              </h3>
+              <p>
+                I take meticulous care over the launching of your idea
+                and want to make sure it succeeds!
+                We won&apos;t stop at anything to see it!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

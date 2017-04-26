@@ -371,10 +371,24 @@ export default class Index extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      canUseDOM: ExecutionEnvironment.canUseDOM,
-      hasInteracted: false,
-    };
+
+    const canUseDOM = ExecutionEnvironment.canUseDOM;
+
+    if (canUseDOM) {
+      this.state = {
+        canUseDOM: ExecutionEnvironment.canUseDOM,
+        hasInteracted: false,
+        windowDimensions: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+        },
+      };
+    } else {
+      this.state = {
+        canUseDOM: ExecutionEnvironment.canUseDOM,
+        hasInteracted: false,
+      };
+    }
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -391,7 +405,7 @@ export default class Index extends React.Component {
 
   updateWindowDimensions() {
     this.setState({
-      window: {
+      windowDimensions: {
         width: window.innerWidth,
         height: window.innerHeight,
       },
@@ -408,8 +422,6 @@ export default class Index extends React.Component {
       canvas = (
         <Starfield onInteraction={() => this.setState({ hasInteracted: true })} />
       );
-      windowDimensions = this.state.windowDimensions || { width: window.innerWidth,
-        height: window.innerHeight };
     }
 
     return (
@@ -431,7 +443,7 @@ export default class Index extends React.Component {
             {canvas}
           </StarfieldEnclosure>
         </div>
-        <StickyNav windowDimensions={windowDimensions} />
+        <StickyNav windowDimensions={this.state.windowDimensions || { width: 0, height: 0 }} />
         <Element name="intro_pane" className="element">
           <IntroPane />
         </Element>

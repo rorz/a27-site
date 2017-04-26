@@ -402,10 +402,14 @@ export default class Index extends React.Component {
     const canUseDOM = this.state.canUseDOM;
     let canvas = null;
 
+    let windowDimensions = null;
+
     if (canUseDOM) {
       canvas = (
         <Starfield onInteraction={() => this.setState({ hasInteracted: true })} />
       );
+      windowDimensions = this.state.windowDimensions || { width: window.innerWidth,
+        height: window.innerHeight };
     }
 
     return (
@@ -427,7 +431,7 @@ export default class Index extends React.Component {
             {canvas}
           </StarfieldEnclosure>
         </div>
-        <StickyNav windowDimensions={this.state.windowDimensions} />
+        <StickyNav windowDimensions={windowDimensions} />
         <Element name="intro_pane" className="element">
           <IntroPane />
         </Element>

@@ -374,10 +374,6 @@ export default class Index extends React.Component {
     this.state = {
       canUseDOM: ExecutionEnvironment.canUseDOM,
       hasInteracted: false,
-      windowDimensions: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      },
     };
 
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);

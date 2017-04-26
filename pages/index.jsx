@@ -27,6 +27,8 @@ import testServiceIcon from './test-service-icon.png';
 import mockupSM from './mockup-sm-01.jpg';
 import mockupECO from './mockup-eco-01.jpg';
 import mockupHM from './mockup-hm-01.jpg';
+
+import blueprint from './blueprint-idea@2x.png';
 // const Scroll = require('react-scroll');
 //
 // const Link = Scroll.Link;
@@ -178,7 +180,7 @@ function IntroPane() {
           </p>
           <div className="columns">
             <div className="solutionColumn">
-              <img alt="test" src={testShipIcon} width={200} />
+              <img alt="test" src={blueprint} width={200} />
               <h3>
                 Planning Phase
               </h3>

@@ -25,6 +25,8 @@ import testShipIcon from './test-ship.png';
 import testServiceIcon from './test-service-icon.png';
 
 import mockupSM from './mockup-sm-01.jpg';
+import mockupECO from './mockup-eco-01.jpg';
+import mockupHM from './mockup-hm-01.jpg';
 // const Scroll = require('react-scroll');
 //
 // const Link = Scroll.Link;
@@ -299,6 +301,7 @@ function SlideIcon(props) {
         }}
       >
         <h3>{props.title}</h3>
+        <h4>{props.subtitle}</h4>
         <p>{props.description}</p>
       </div>
     </Reveal>),
@@ -318,6 +321,7 @@ function SlideIcon(props) {
 SlideIcon.propTypes = {
   invert: PropTypes.bool,
   title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
 };
@@ -330,19 +334,22 @@ function ClientsPane() {
         <h2>Some things we&apos;ve built:</h2>
         <SlideIcon
           title="SkyMining®"
-          description="More hello-worldy-stuff"
+          subtitle="Web | Docs | Presentations | Research | Graphics | Video"
+          description="SkyMining is the world's first solution for removing carbon emissions from the atmosphere, and turning them into a solid fuel; in a massively-scalable way. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, as well as many revisions of investor material."
           icon={mockupSM}
         />
         <SlideIcon
           title="EcoServices"
-          description="More hello-worldy-stuff"
-          icon={testShipIcon}
+          subtitle="Web | Graphics"
+          description="EcoServices is a Swedish energy startup, striving to change the way companies think about their investment capital when it comes to renewables. Apollo27 created their launch site, which is bilingual, as well as helping with framing content on the page."
+          icon={mockupECO}
           invert
         />
         <SlideIcon
           title="HeadMarket"
-          description="More hello-worldy-stuff"
-          icon={testShipIcon}
+          subtitle="UI / UX Mockups | Presentations | Graphics"
+          description="HeadMarket is an early-stage tech startup looking to revolutionise the way people prune and recruit job candidates. We have so far helped them with a seed-stage investor presentation, and an array of mockups for their website-in-development."
+          icon={mockupHM}
         />
       </div>
     </div>

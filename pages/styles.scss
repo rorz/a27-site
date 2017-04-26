@@ -68,6 +68,7 @@ div.sectionWidth {
   justify-content: center;
   width: $max-width;
   z-index: 10;
+  padding-top: 3rem;
 }
 
 .one-two div {
@@ -88,10 +89,15 @@ div.sectionWidth {
 }
 
 .one-two-para div h3,
-.one-two-para div p {
+.one-two-para div p,
+.one-two-para div h4 {
   text-align: inherit !important;
   padding: 0;
   margin: 0;
+}
+
+.one-two-para div h4 {
+  padding-bottom: 1.4rem;
 }
 
 .one-two-para div h3 {

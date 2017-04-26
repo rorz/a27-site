@@ -54,34 +54,56 @@ div.sectionWidth {
 
 .blockContainer {
     background-color: #fff;
+    width: $max-width;
 }
 
 .services-pane .blockContainer {
     border: 8px solid $apollo-red;
 }
 
+
 .one-two {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: $max-width;
+  z-index: 10;
 }
 
 .one-two div {
-  border: 8px solid $apollo-red;
-  width: 100%;
+  /* border: 8px solid $apollo-red; */
+  background-color: white;
 }
 
 .one-two-icon {
-  width: 33%;
+  flex: 1;
 }
 
 .one-two-para {
-  width: 67%;
+  flex: 2;
+}
+
+.one-two-para div {
+  border: none;
+}
+
+.one-two-para div h3,
+.one-two-para div p {
+  text-align: inherit !important;
+  padding: 0;
+  margin: 0;
+}
+
+.one-two-para div h3 {
+  color: $apollo-red;
+  border-top: 8px solid $apollo-red;
+  padding-top: 1rem;
 }
 
 hr.section-divider {
     border-width: 10px;
     border-color: #eee;
+    margin: 0;
 }
 
 nav.stickyNav {
@@ -151,6 +173,7 @@ nav.stickyNav {
     align-items: center;
     -webkit-justify-content: center;
     -webkit-align-items: center;
+    z-index: 200;
 }
 
 .starfield-canvas {
@@ -187,7 +210,8 @@ nav.stickyNav {
 }
 
 .starfield-byline,
-.starfield-overlay h2 {
+.starfield-overlay h2,
+.scroll-down-link {
     color: #FF7777;
     text-shadow: 0 0 1px rgba(255, 255, 255, .4), 0 0 2px rgba(255, 255, 255, .4), 0 0 3px rgba(255, 255, 255, .4), 0 0 4px rgba(210, 16, 25, .4), 0 0 7px rgba(210, 16, 25, .4), 0 0 8px rgba(210, 16, 25, .4), 0 0 10px rgba(210, 16, 25, .4);
     -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
@@ -201,6 +225,18 @@ nav.stickyNav {
 
 .mouseIcon {
     margin-top: -2rem;
+}
+
+.scroll-down-link {
+  padding-top: 4rem;
+  font-weight: 400;
+  opacity: 0.8;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+
+}
+.scroll-down-link:hover {
+  color: white;
 }
 
 .blink_me {
@@ -276,6 +312,7 @@ nav.stickyNav {
 }
 /* FOOTER */
 footer.siteFooter {
+  padding: 3rem 0;
     height: 10vh;
     display: flex;
     align-items: center;
@@ -576,3 +613,32 @@ footer.siteFooter {
   animation-fill-mode: forwards;
 }
 */
+
+.under-development-box {
+  position: fixed;
+  top: 85vh;
+  right: 1vw;
+  width: 190px;
+  height: 100px;
+  background-color: yellow;
+  padding: 0.4rem;
+  opacity: 0.4;
+  z-index: 100;
+}
+
+.under-development-box:hover {
+  opacity: 1;
+}
+
+.under-development-box h3 {
+  font-size: 0.9rem;
+  line-height: 1rem;
+  margin-bottom: 0.2rem;
+}
+.under-development-box p {
+  font-size: 0.7rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 0.9rem;
+  text-decoration: underline;
+}

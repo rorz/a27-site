@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+animate.css	package.json	/^    "animate.css": "^3.5.2",$/;"	f
 author	package.json	/^  "author": "Kyle Mathews <mathews.kyle@gmail.com>",$/;"	f
 awesome	pages/json.json	/^    "awesome": true$/;"	f
 babel-eslint	package.json	/^    "babel-eslint": "^7.1.1",$/;"	f
@@ -44,11 +45,13 @@ markdown-it-sub	package.json	/^    "markdown-it-sub": "^1.0.0",$/;"	f
 name	package.json	/^  "name": "gatsby-starter-default",$/;"	f
 object-assign	package.json	/^    "object-assign": "^4.1.1",$/;"	f
 possible	pages/json.json	/^    "possible": true,$/;"	f
+prop-types	package.json	/^    "prop-types": "^15.5.8",$/;"	f
 react	package.json	/^    "react": "^15.4.2",$/;"	f
 react-cursor-position	package.json	/^    "react-cursor-position": "^1.3.6",$/;"	f
 react-headroom	package.json	/^    "react-headroom": "^2.1.2",$/;"	f
 react-helmet	package.json	/^    "react-helmet": "^3.2.2",$/;"	f
 react-responsive-grid	package.json	/^    "react-responsive-grid": "^0.3.3",$/;"	f
+react-reveal	package.json	/^    "react-reveal": "^0.1.1",$/;"	f
 react-scroll	package.json	/^    "react-scroll": "^1.4.7",$/;"	f
 react-sticky	package.json	/^    "react-sticky": "^5.0.5",$/;"	f
 react-three-renderer	package.json	/^    "react-three-renderer": "^3.0.2",$/;"	f

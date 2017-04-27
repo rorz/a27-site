@@ -228,7 +228,29 @@ function IntroPane() {
   );
 }
 
-function ServicesPane() {
+function ServicesPane(props) {
+  const items = props.content.map((row) => {
+    const columns = row.map((entry) => {
+      return (
+        <div className="solutionColumn">
+          <img alt="test" src={entry.icon} width={160} />
+          <h3>
+            {entry.title}
+          </h3>
+          <p>
+            {entry.detail}
+          </p>
+        </div>
+      );
+    });
+
+    return (
+      <div className="columns">
+        {columns}
+      </div>
+    )
+  });
+
   return (
     <div className="section red">
       <div className="intro-pane">
@@ -241,52 +263,16 @@ function ServicesPane() {
             We&apos;re also well-versed in positioning the content we create
             towards the audience you need; whether it be investors, clients, or users.
           </p>
-          <div className="columns">
-            <div className="solutionColumn">
-              <img alt="test" src={webIcon} width={160} />
-              <h3>
-                Web
-              </h3>
-            </div>
-            <div className="solutionColumn">
-              <img alt="test" src={mobileIcon} width={160} />
-              <h3>
-                Mobile Apps
-              </h3>
-            </div>
-            <div className="solutionColumn">
-              <img alt="test" src={graphicsIcon} width={160} />
-              <h3>
-                Graphics
-              </h3>
-            </div>
-          </div>
-          <div className="columns">
-            <div className="solutionColumn">
-              <img alt="test" src={brandingIcon} width={160} />
-              <h3>
-                Branding
-              </h3>
-            </div>
-            <div className="solutionColumn">
-              <img alt="test" src={presentationIcon} width={160} />
-              <h3>
-                Presentations
-              </h3>
-            </div>
-            <div className="solutionColumn">
-              <img alt="test" src={documentIcon} width={160} />
-              <h3>
-                Documents
-              </h3>
-            </div>
-          </div>
+          {items}
         </div>
       </div>
     </div>
 
   );
 }
+ServicesPane.propTypes = {
+  content: React.PropTypes.arrayOf(React.PropTypes.object),
+};
 
 function SlideIcon(props) {
   const invert = props.invert;
@@ -458,7 +444,40 @@ export default class Index extends React.Component {
         </Element>
         <hr className="section-divider" />
         <Element name="services_pane" className="element">
-          <ServicesPane />
+          <ServicesPane
+            content={[[
+              {
+                title: 'Web',
+                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                icon: webIcon,
+              },
+              {
+                title: 'Mobile Apps',
+                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                icon: mobileIcon,
+              },
+              {
+                title: 'Graphics',
+                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                icon: graphicsIcon,
+              }],
+              [{
+                title: 'Branding',
+                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                icon: brandingIcon,
+              },
+              {
+                title: 'Documents',
+                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                icon: documentIcon,
+              },
+              {
+                title: 'Presentations',
+                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                icon: presentationIcon,
+              }],
+            ]}
+          />
         </Element>
         <hr className="section-divider" />
         <Element name="clients_pane" className="element">

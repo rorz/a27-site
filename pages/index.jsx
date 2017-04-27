@@ -28,7 +28,9 @@ import mockupSM from './mockup-sm-01.jpg';
 import mockupECO from './mockup-eco-01.jpg';
 import mockupHM from './mockup-hm-01.jpg';
 
-import blueprint from './blueprint-idea@2x.png';
+import blueprintIdea from './blueprint-idea@2x.png';
+import buildIdea from './build-idea@2x.png';
+import launchIdea from './launch-idea@2x.png';
 // const Scroll = require('react-scroll');
 //
 // const Link = Scroll.Link;
@@ -180,7 +182,7 @@ function IntroPane() {
           </p>
           <div className="columns">
             <div className="solutionColumn">
-              <img alt="test" src={blueprint} width={200} />
+              <img alt="test" src={blueprintIdea} width={200} />
               <h3>
                 Planning Phase
               </h3>
@@ -191,7 +193,7 @@ function IntroPane() {
               </p>
             </div>
             <div className="solutionColumn">
-              <img alt="test" src={testShipIcon} width={200} />
+              <img alt="test" src={buildIdea} width={200} />
               <h3>
                 Building Phase
               </h3>
@@ -202,7 +204,7 @@ function IntroPane() {
               </p>
             </div>
             <div className="solutionColumn">
-              <img alt="test" src={testShipIcon} width={200} />
+              <img alt="test" src={launchIdea} width={200} />
               <h3>
                 Launch Phase
               </h3>

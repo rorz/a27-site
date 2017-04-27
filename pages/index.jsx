@@ -31,6 +31,13 @@ import mockupHM from './mockup-hm-01.jpg';
 import blueprintIdea from './blueprint-idea@2x.png';
 import buildIdea from './build-idea@2x.png';
 import launchIdea from './launch-idea@2x.png';
+
+import presentationIcon from './presentation-icon.png';
+import documentIcon from './document-icon.png';
+import graphicsIcon from './graphics-icon.png';
+import webIcon from './web-icon.png';
+import mobileIcon from './mobile-icon.png';
+import brandingIcon from './branding-icon.png';
 // const Scroll = require('react-scroll');
 //
 // const Link = Scroll.Link;
@@ -236,41 +243,41 @@ function ServicesPane() {
           </p>
           <div className="columns">
             <div className="solutionColumn">
-              <img alt="test" src={testServiceIcon} width={160} />
+              <img alt="test" src={webIcon} width={160} />
               <h3>
-                Planning Phase
+                Web
               </h3>
             </div>
             <div className="solutionColumn">
-              <img alt="test" src={testServiceIcon} width={160} />
+              <img alt="test" src={mobileIcon} width={160} />
               <h3>
-                Building Phase
+                Mobile Apps
               </h3>
             </div>
             <div className="solutionColumn">
-              <img alt="test" src={testServiceIcon} width={160} />
+              <img alt="test" src={graphicsIcon} width={160} />
               <h3>
-                Launch Phase
+                Graphics
               </h3>
             </div>
           </div>
           <div className="columns">
             <div className="solutionColumn">
-              <img alt="test" src={testServiceIcon} width={160} />
+              <img alt="test" src={brandingIcon} width={160} />
               <h3>
-                Planning Phase
+                Branding
               </h3>
             </div>
             <div className="solutionColumn">
-              <img alt="test" src={testServiceIcon} width={160} />
+              <img alt="test" src={presentationIcon} width={160} />
               <h3>
-                Building Phase
+                Presentations
               </h3>
             </div>
             <div className="solutionColumn">
-              <img alt="test" src={testServiceIcon} width={160} />
+              <img alt="test" src={documentIcon} width={160} />
               <h3>
-                Launch Phase
+                Documents
               </h3>
             </div>
           </div>

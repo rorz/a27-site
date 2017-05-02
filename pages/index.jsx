@@ -478,12 +478,12 @@ export default class Index extends React.Component {
             content={[[
               {
                 title: 'Web',
-                detail: 'HTML/CSS, Javascript, React, Wordpress, and hosting',
+                detail: 'HTML/CSS, Javascript, React.JS, Wordpress, and hosting',
                 icon: webIcon,
               },
               {
                 title: 'Mobile Apps',
-                detail: 'Native apps for iPhone written in Objective-C',
+                detail: 'Native apps for iOS (Swift) — billingual apps in React Native',
                 icon: mobileIcon,
               },
               {

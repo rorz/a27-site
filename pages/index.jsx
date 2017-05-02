@@ -253,7 +253,7 @@ function ServicesPane(props) {
         <h2>The right skills for the mission</h2>
         <div className="blockContainer">
           <p>
-            At Apollo27, we offer a wide-ranging array of complimentary skills to ensure
+            At Apollo27, we offer a wide-ranging array of complementary skills to ensure
             we complete and execute the mission without a glitch, no matter its shape, size or type.
           </p>
           {items}

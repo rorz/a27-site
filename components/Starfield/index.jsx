@@ -47,6 +47,7 @@ export default class Starfield extends React.Component {
 
     THREE.DefaultLoadingManager.onLoad = () => {
       console.log('Loading Complete!');
+      this.props.didLoad();
     };
 
     THREE.DefaultLoadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
@@ -314,4 +315,5 @@ export default class Starfield extends React.Component {
 }
 Starfield.propTypes = {
   onInteraction: React.PropTypes.func.isRequired,
+  didLoad: React.PropTypes.func.isRequired,
 };

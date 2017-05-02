@@ -50,7 +50,7 @@ function StarfieldEnclosure(props) {
       <div className={'starfield-enclosure'}>
         {props.children}
         <div className={'starfield-blackout'} />
-        <StarterOverlay />
+        <StarterOverlay hasLoaded={props.hasLoaded} />
       </div>
     );
   }
@@ -65,6 +65,7 @@ function StarfieldEnclosure(props) {
 StarfieldEnclosure.propTypes = {
   children: React.PropTypes.element.isRequired,
   hasInteracted: React.PropTypes.bool.isRequired,
+  hasLoaded: React.PropTypes.bool.isRequired,
 };
 
 function StarfieldOverlay() {
@@ -89,16 +90,35 @@ function StarfieldOverlay() {
   );
 }
 
-function StarterOverlay() {
+function StarterOverlay(props) {
+  let content = (<div />);
+
+  if (!props.hasLoaded) {
+    content = (
+      <div className="starfield-overlay blink_me">
+        <h2>Loading, please wait.</h2>
+      </div>
+    );
+  } else {
+    content = (
+      <div className="starfield-overlay blink_me">
+        <h2>Please Move Your Mouse</h2>
+        <object className="mouseIcon" type="image/svg+xml" data={mouseIcon} width={80}>
+          Mouse Icon
+        </object>
+      </div>
+    );
+  }
+
   return (
-    <div className="starfield-overlay blink_me">
-      <h2>Loading (Please Wait)</h2>
-      <object className="mouseIcon" type="image/svg+xml" data={mouseIcon} width={80}>
-        Mouse Icon
-      </object>
+    <div>
+      {content}
     </div>
   );
 }
+StarterOverlay.propTypes = {
+  hasLoaded: React.PropTypes.bool.isRequired,
+};
 
 
 function WidthMaster(props) {
@@ -372,6 +392,7 @@ export default class Index extends React.Component {
     if (canUseDOM) {
       this.state = {
         canUseDOM: ExecutionEnvironment.canUseDOM,
+        didLoad: false,
         hasInteracted: false,
         windowDimensions: {
           width: window.innerWidth,
@@ -411,11 +432,14 @@ export default class Index extends React.Component {
     const canUseDOM = this.state.canUseDOM;
     let canvas = null;
 
-    let windowDimensions = null;
+    // let windowDimensions = null;
 
     if (canUseDOM) {
       canvas = (
-        <Starfield onInteraction={() => this.setState({ hasInteracted: true })} />
+        <Starfield
+          onInteraction={() => this.setState({ hasInteracted: true })}
+          didLoad={() => this.setState({ didLoad: true })}
+        />
       );
     }
 
@@ -434,7 +458,10 @@ export default class Index extends React.Component {
         />
         <div style={{ backgroundColor: '#222' }}>
           <input type="checkbox" className="switch" checked={this.state.hasInteracted} readOnly />
-          <StarfieldEnclosure hasInteracted={this.state.hasInteracted} >
+          <StarfieldEnclosure
+            hasInteracted={this.state.hasInteracted}
+            hasLoaded={this.state.didLoad}
+          >
             {canvas}
           </StarfieldEnclosure>
         </div>

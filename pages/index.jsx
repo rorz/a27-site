@@ -193,7 +193,7 @@ function IntroPane() {
                 Planning Phase
               </h3>
               <p>
-                We plan all projects meticulously together with our clients,
+                We plan all projects together with our clients,
                 ensuring we set out on a mission with clear goals, great deliverables and realistic timelines.
               </p>
             </div>
@@ -204,7 +204,7 @@ function IntroPane() {
               </h3>
               <p>
                 Excellence directs our work like a rocket's guidance-computer, and we keep you updated
-                throughout construction with progress reports, sketches, and demos.
+                throughout construction with timely progress reports.
               </p>
             </div>
             <div className="solutionColumn">
@@ -325,13 +325,13 @@ function ClientsPane() {
         <SlideIcon
           title="SkyMining®"
           subtitle="Web | Docs | Presentations | Research | Graphics | Video"
-          description="SkyMining is the world's first commerical solution for removing carbon emissions from the atmosphere, and turning them into a clean, renewable solid fuel. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, business plan, and investor material."
+          description="SkyMining is the world's first commerical solution for removing CO2 from the atmosphere, and turning it into a clean, renewable fuel. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, business plan, and investor material."
           icon={mockupSM}
         />
         <SlideIcon
           title="EcoServices"
           subtitle="Web | Graphics"
-          description="EcoServices is a Swedish energy startup, enabling companies to increase both their energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their launch site, which is bilingual, as well as helped with framing content on the page."
+          description="EcoServices is a Swedish energy startup, enabling companies to increase both energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their new bilingual launch site, as well as helped with framing content on the page."
           icon={mockupECO}
           invert
         />
@@ -441,12 +441,12 @@ export default class Index extends React.Component {
             content={[[
               {
                 title: 'Web',
-                detail: 'HTML/CSS, Javascript, React, Wordpress, as well as back-end / hosting',
+                detail: 'HTML/CSS, Javascript, React, Wordpress, and hosting',
                 icon: webIcon,
               },
               {
                 title: 'Mobile Apps',
-                detail: 'Native apps for iPhone written in Objective-C.',
+                detail: 'Native apps for iPhone written in Objective-C',
                 icon: mobileIcon,
               },
               {
@@ -461,7 +461,7 @@ export default class Index extends React.Component {
               },
               {
                 title: 'Documents',
-                detail: 'Formatting and content for sales material, investment briefs, research, etc.',
+                detail: 'Content and formatting for any type of business documentation',
                 icon: documentIcon,
               },
               {

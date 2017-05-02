@@ -92,7 +92,7 @@ function StarfieldOverlay() {
 function StarterOverlay() {
   return (
     <div className="starfield-overlay blink_me">
-      <h2>MOVE YOUR MOUSE</h2>
+      <h2>Loading (Please Wait)</h2>
       <object className="mouseIcon" type="image/svg+xml" data={mouseIcon} width={80}>
         Mouse Icon
       </object>
@@ -164,7 +164,7 @@ function StickyNav(props) {
           >
             Clients
           </Link>
-          <a className="navItem contact">Contact Us</a>
+          <a className="navItem contact">Contact&nbsp;Us</a>
         </nav>
       </WidthMaster>
     </Sticky>

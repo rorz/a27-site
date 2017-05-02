@@ -45,6 +45,14 @@ export default class Starfield extends React.Component {
     const sprite4 = textureLoader.load('./snowflake-4.png');
     const sprite5 = textureLoader.load('./snowflake-5.png');
 
+    THREE.DefaultLoadingManager.onLoad = () => {
+      console.log('Loading Complete!');
+    };
+
+    THREE.DefaultLoadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
+      console.log(`Loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files.`);
+    };
+
     this.particleParameters = [
       [
         [1.0, 0.2, 0.5],

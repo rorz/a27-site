@@ -183,9 +183,8 @@ function IntroPane() {
           <p>
             At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
             Having primarily worked with start-ups,
-            we know how fast-paced and dynamic work needs to be.
-            We&apos;re also well-versed in positioning the content we create
-            towards the audience you need; whether it be investors, clients, or users.
+            we know how fast-paced and dynamic work needs to be, and we take great care to position
+            the content towards its intended audience; whether be investors, clients, or users.
           </p>
           <div className="columns">
             <div className="solutionColumn">
@@ -194,9 +193,8 @@ function IntroPane() {
                 Planning Phase
               </h3>
               <p>
-                We take meticulous care over the planning of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it planned.
+                We plan all projects meticulously together with our clients,
+                ensuring we set out on a mission with clear goals, great deliverables and realistic timelines.
               </p>
             </div>
             <div className="solutionColumn">
@@ -205,9 +203,8 @@ function IntroPane() {
                 Building Phase
               </h3>
               <p>
-                You take meticulous care over the building of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it built.
+                Excellence directs our work like a rocket's guidance-computer, and we keep you updated
+                throughout construction with progress reports, sketches, and demos.
               </p>
             </div>
             <div className="solutionColumn">
@@ -216,9 +213,8 @@ function IntroPane() {
                 Launch Phase
               </h3>
               <p>
-                I take meticulous care over the launching of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it!
+                Nothing fills us with more pride than the successful launch of another project.
+                Post-launch we of course offer mission-support to ensure a smooth ride.
               </p>
             </div>
           </div>
@@ -254,14 +250,11 @@ function ServicesPane(props) {
   return (
     <div className="section red">
       <div className="intro-pane">
-        <h2>A mission-satisfying array of skillsets.</h2>
+        <h2>The right skills for the mission</h2>
         <div className="blockContainer">
           <p>
-            At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
-            Having primarily worked with start-ups,
-            we know how fast-paced and dynamic work needs to be.
-            We&apos;re also well-versed in positioning the content we create
-            towards the audience you need; whether it be investors, clients, or users.
+            At Apollo27, we offer a wide-ranging array of complimentary skills to ensure
+            we complete and execute the mission without a glitch, no matter its shape, size or type.
           </p>
           {items}
         </div>

@@ -183,8 +183,8 @@ function IntroPane() {
           <p>
             At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
             Having primarily worked with start-ups,
-            we know how fast-paced and dynamic work needs to be, and we take great care to position
-            the content towards its intended audience; whether be investors, clients, or users.
+            we know how fast-paced and dynamic work needs to be, and we take great care in positioning
+            your content towards its intended audience; whether it be investors, clients, or users.
           </p>
           <div className="columns">
             <div className="solutionColumn">
@@ -324,14 +324,14 @@ function ClientsPane() {
         <h2>Some things we&apos;ve built:</h2>
         <SlideIcon
           title="SkyMining®"
-          subtitle="Web | Docs | Presentations | Research | Graphics | Video"
+          subtitle="Web | Documents | Presentations | Branding | Graphics"
           description="SkyMining is the world's first commerical solution for removing CO2 from the atmosphere, and turning it into a clean, renewable fuel. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, business plan, and investor material."
           icon={mockupSM}
         />
         <SlideIcon
           title="EcoServices"
-          subtitle="Web | Graphics"
-          description="EcoServices is a Swedish energy startup, enabling companies to increase both energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their new bilingual launch site, as well as helped with framing content on the page."
+          subtitle="Web | Graphics | Branding"
+          description="EcoServices is a Swedish energy startup, enabling companies to increase both energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their new bilingual launch site, as well as working on framing."
           icon={mockupECO}
           invert
         />

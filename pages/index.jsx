@@ -205,14 +205,13 @@ function IntroPane() {
   return (
     <div className="section">
       <div className="services-pane">
-        <h2>Guiding your business from <u>idea</u> to <u>fruition</u>.</h2>
+        <h2>Guiding your projects from <u>idea</u> to <u>launch</u>.</h2>
         <div className="blockContainer">
           <p>
             At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
             Having primarily worked with start-ups,
-            we know how fast-paced and dynamic work needs to be.
-            We&apos;re also well-versed in positioning the content we create
-            towards the audience you need; whether it be investors, clients, or users.
+            we know how fast-paced and dynamic work needs to be, and we take great care in positioning
+            your content towards its intended audience; whether it be investors, clients, or users.
           </p>
           <div className="columns">
             <div className="solutionColumn">
@@ -221,9 +220,8 @@ function IntroPane() {
                 Planning Phase
               </h3>
               <p>
-                We take meticulous care over the planning of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it planned.
+                We plan all projects together with our clients,
+                ensuring we set out on a mission with clear goals, great deliverables and realistic timelines.
               </p>
             </div>
             <div className="solutionColumn">
@@ -232,9 +230,8 @@ function IntroPane() {
                 Building Phase
               </h3>
               <p>
-                You take meticulous care over the building of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it built.
+                Excellence directs our work like a rocket's guidance-computer, and we keep you updated
+                throughout construction with timely progress reports.
               </p>
             </div>
             <div className="solutionColumn">
@@ -243,9 +240,8 @@ function IntroPane() {
                 Launch Phase
               </h3>
               <p>
-                I take meticulous care over the launching of your idea
-                and want to make sure it succeeds!
-                We won&apos;t stop at anything to see it!
+                Nothing fills us with more pride than the successful launch of another project.
+                Post-launch we of course offer mission-support to ensure a smooth ride.
               </p>
             </div>
           </div>
@@ -281,14 +277,11 @@ function ServicesPane(props) {
   return (
     <div className="section red">
       <div className="intro-pane">
-        <h2>A mission-satisfying array of skillsets.</h2>
+        <h2>The right skills for the mission</h2>
         <div className="blockContainer">
           <p>
-            At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
-            Having primarily worked with start-ups,
-            we know how fast-paced and dynamic work needs to be.
-            We&apos;re also well-versed in positioning the content we create
-            towards the audience you need; whether it be investors, clients, or users.
+            At Apollo27, we offer a wide-ranging array of complementary skills to ensure
+            we complete and execute the mission without a glitch, no matter its shape, size or type.
           </p>
           {items}
         </div>
@@ -358,21 +351,21 @@ function ClientsPane() {
         <h2>Some things we&apos;ve built:</h2>
         <SlideIcon
           title="SkyMining®"
-          subtitle="Web | Docs | Presentations | Research | Graphics | Video"
-          description="SkyMining is the world's first solution for removing carbon emissions from the atmosphere, and turning them into a solid fuel; in a massively-scalable way. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, as well as many revisions of investor material."
+          subtitle="Web | Documents | Presentations | Branding | Graphics"
+          description="SkyMining is the world's first commerical solution for removing CO2 from the atmosphere, and turning it into a clean, renewable fuel. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, business plan, and investor material."
           icon={mockupSM}
         />
         <SlideIcon
           title="EcoServices"
-          subtitle="Web | Graphics"
-          description="EcoServices is a Swedish energy startup, striving to change the way companies think about their investment capital when it comes to renewables. Apollo27 created their launch site, which is bilingual, as well as helping with framing content on the page."
+          subtitle="Web | Graphics | Branding"
+          description="EcoServices is a Swedish energy startup, enabling companies to increase both energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their new bilingual launch site, as well as working on framing."
           icon={mockupECO}
           invert
         />
         <SlideIcon
           title="HeadMarket"
           subtitle="UI / UX Mockups | Presentations | Graphics"
-          description="HeadMarket is an early-stage tech startup looking to revolutionise the way people prune and recruit job candidates. We have so far helped them with a seed-stage investor presentation, and an array of mockups for their website-in-development."
+          description="HeadMarket is an early-stage tech startup looking to revolutionise the way companies source and manage job candidates with an all-in-one online recruitment tool. We have so far helped them with a seed-stage investor presentation, and an array of mockups for their website-in-development."
           icon={mockupHM}
         />
       </div>
@@ -485,32 +478,32 @@ export default class Index extends React.Component {
             content={[[
               {
                 title: 'Web',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'HTML/CSS, Javascript, React, Wordpress, and hosting',
                 icon: webIcon,
               },
               {
                 title: 'Mobile Apps',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Native apps for iPhone written in Objective-C',
                 icon: mobileIcon,
               },
               {
                 title: 'Graphics',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Anything from simple icons to complex infographics',
                 icon: graphicsIcon,
               }],
               [{
                 title: 'Branding',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Logo design, typography, colour, and iconography',
                 icon: brandingIcon,
               },
               {
                 title: 'Documents',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Content and formatting for any type of business documentation',
                 icon: documentIcon,
               },
               {
                 title: 'Presentations',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Advanced Keynote, PowerPoint and video presentations',
                 icon: presentationIcon,
               }],
             ]}

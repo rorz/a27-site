@@ -178,7 +178,7 @@ function IntroPane() {
   return (
     <div className="section">
       <div className="services-pane">
-        <h2>Guiding your business from <u>idea</u> to <u>fruition</u>.</h2>
+        <h2>Guiding your projects from <u>idea</u> to <u>launch</u>.</h2>
         <div className="blockContainer">
           <p>
             At Apollo27, we take a hands-on and holistic approach to making your idea a reality.
@@ -332,20 +332,20 @@ function ClientsPane() {
         <SlideIcon
           title="SkyMining®"
           subtitle="Web | Docs | Presentations | Research | Graphics | Video"
-          description="SkyMining is the world's first solution for removing carbon emissions from the atmosphere, and turning them into a solid fuel; in a massively-scalable way. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, as well as many revisions of investor material."
+          description="SkyMining is the world's first commerical solution for removing carbon emissions from the atmosphere, and turning them into a clean, renewable solid fuel. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, business plan, and investor material."
           icon={mockupSM}
         />
         <SlideIcon
           title="EcoServices"
           subtitle="Web | Graphics"
-          description="EcoServices is a Swedish energy startup, striving to change the way companies think about their investment capital when it comes to renewables. Apollo27 created their launch site, which is bilingual, as well as helping with framing content on the page."
+          description="EcoServices is a Swedish energy startup, enabling companies to increase both their energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their launch site, which is bilingual, as well as helped with framing content on the page."
           icon={mockupECO}
           invert
         />
         <SlideIcon
           title="HeadMarket"
           subtitle="UI / UX Mockups | Presentations | Graphics"
-          description="HeadMarket is an early-stage tech startup looking to revolutionise the way people prune and recruit job candidates. We have so far helped them with a seed-stage investor presentation, and an array of mockups for their website-in-development."
+          description="HeadMarket is an early-stage tech startup looking to revolutionise the way companies source and manage job candidates with an all-in-one online recruitment tool. We have so far helped them with a seed-stage investor presentation, and an array of mockups for their website-in-development."
           icon={mockupHM}
         />
       </div>
@@ -448,32 +448,32 @@ export default class Index extends React.Component {
             content={[[
               {
                 title: 'Web',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'HTML/CSS, Javascript, React, Wordpress, as well as back-end / hosting',
                 icon: webIcon,
               },
               {
                 title: 'Mobile Apps',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Native apps for iPhone written in Objective-C.',
                 icon: mobileIcon,
               },
               {
                 title: 'Graphics',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Anything from simple icons to complex infographics',
                 icon: graphicsIcon,
               }],
               [{
                 title: 'Branding',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Logo design, typography, colour, and iconography',
                 icon: brandingIcon,
               },
               {
                 title: 'Documents',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Formatting and content for sales material, investment briefs, research, etc.',
                 icon: documentIcon,
               },
               {
                 title: 'Presentations',
-                detail: 'Test content here for deficiencies and efficiencies alike! Enjoy...',
+                detail: 'Advanced Keynote, PowerPoint and video presentations',
                 icon: presentationIcon,
               }],
             ]}

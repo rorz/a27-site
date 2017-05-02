@@ -97,10 +97,12 @@ function StarfieldOverlay() {
 function StarterOverlay(props) {
   let content = (<div />);
 
+  const loadingProgressPercent = props.loadingProgressPercent;
+
   if (!props.hasLoaded) {
     content = (
       <div className="starfield-overlay blink_me">
-        <h2>Loading ({props.loadingProgressPercent} %), please wait.</h2>
+        <h2>Loading ({loadingProgressPercent} %), please wait.</h2>
       </div>
     );
   } else {

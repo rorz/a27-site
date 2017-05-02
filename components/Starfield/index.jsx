@@ -55,6 +55,7 @@ export default class Starfield extends React.Component {
 
       const loadingProgressPercent = (itemsLoaded / itemsTotal) * 100;
       this.props.updateLoadingProgress(loadingProgressPercent);
+      console.log(`LOADING PROGRESS: ${loadingProgressPercent}`)
     };
 
     this.particleParameters = [

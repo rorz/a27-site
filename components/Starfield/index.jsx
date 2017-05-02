@@ -52,6 +52,9 @@ export default class Starfield extends React.Component {
 
     THREE.DefaultLoadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
       console.log(`Loading file: ${url}.\nLoaded ${itemsLoaded} of ${itemsTotal} files.`);
+
+      const loadingProgressPercent = (itemsLoaded / itemsTotal) * 100;
+      this.props.updateLoadingProgress(loadingProgressPercent);
     };
 
     this.particleParameters = [
@@ -316,4 +319,5 @@ export default class Starfield extends React.Component {
 Starfield.propTypes = {
   onInteraction: React.PropTypes.func.isRequired,
   didLoad: React.PropTypes.func.isRequired,
+  updateLoadingProgress: React.PropTypes.func.isRequired,
 };

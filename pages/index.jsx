@@ -50,7 +50,10 @@ function StarfieldEnclosure(props) {
       <div className={'starfield-enclosure'}>
         {props.children}
         <div className={'starfield-blackout'} />
-        <StarterOverlay hasLoaded={props.hasLoaded} />
+        <StarterOverlay
+          hasLoaded={props.hasLoaded}
+          loadingProgressPercent={props.loadingProgressPercent}
+        />
       </div>
     );
   }
@@ -66,6 +69,7 @@ StarfieldEnclosure.propTypes = {
   children: React.PropTypes.element.isRequired,
   hasInteracted: React.PropTypes.bool.isRequired,
   hasLoaded: React.PropTypes.bool.isRequired,
+  loadingProgressPercent: React.PropTypes.number.isRequired,
 };
 
 function StarfieldOverlay() {
@@ -96,7 +100,7 @@ function StarterOverlay(props) {
   if (!props.hasLoaded) {
     content = (
       <div className="starfield-overlay blink_me">
-        <h2>Loading, please wait.</h2>
+        <h2>Loading ({props.loadingProgressPercent} %), please wait.</h2>
       </div>
     );
   } else {
@@ -118,6 +122,7 @@ function StarterOverlay(props) {
 }
 StarterOverlay.propTypes = {
   hasLoaded: React.PropTypes.bool.isRequired,
+  loadingProgressPercent: React.PropTypes.number.isRequired,
 };
 
 
@@ -394,6 +399,7 @@ export default class Index extends React.Component {
         canUseDOM: ExecutionEnvironment.canUseDOM,
         didLoad: false,
         hasInteracted: false,
+        loadingProgressPercent: 0,
         windowDimensions: {
           width: window.innerWidth,
           height: window.innerHeight,
@@ -439,6 +445,7 @@ export default class Index extends React.Component {
         <Starfield
           onInteraction={() => this.setState({ hasInteracted: true })}
           didLoad={() => this.setState({ didLoad: true })}
+          updateLoadingProgress={progress => this.setState({ loadingProgressPercent: progress })}
         />
       );
     }
@@ -461,6 +468,7 @@ export default class Index extends React.Component {
           <StarfieldEnclosure
             hasInteracted={this.state.hasInteracted}
             hasLoaded={this.state.didLoad}
+            loadingProgressPercent={this.state.loadingProgressPercent}
           >
             {canvas}
           </StarfieldEnclosure>

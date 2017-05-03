@@ -396,13 +396,20 @@ class ModalForm extends React.Component {
       email: '',
       telephone: '',
       query: '',
-      formStatus: 'none',
+      formStatus: 'idle',
       modalOpen: this.props.open,
     };
 
     this.formCallback = this.formCallback.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.updateFormComponent = this.updateFormComponent.bind(this);
+    this.submissionInProgress = this.submissionInProgress.bind(this);
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      modalOpen: props.open,
+    });
   }
 
   formCallback(type) {
@@ -414,8 +421,14 @@ class ModalForm extends React.Component {
       this.setState({
         formStatus: 'sent',
       });
-      window.alert('SENT SUCCESSFULLY!');
     }
+  }
+
+  submissionInProgress() {
+    console.log('submitPressed');
+    this.setState({
+      formStatus: 'sending',
+    });
   }
 
   closeModal() {
@@ -435,13 +448,36 @@ class ModalForm extends React.Component {
     });
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({
-      modalOpen: props.open,
-    });
-  }
-
   render() {
+
+    const disableItems = (this.state.formStatus !== 'idle');
+
+    let headerText = 'Drop Us A Line.';
+    let bodyTextTop = 'Fill in your details below, and let us know how we can help.';
+    let bodyTextBottom = 'We aim to get back to you within 24 hours, during the week.';
+    let buttonText = 'SUBMIT';
+
+    switch (this.state.formStatus) {
+      case 'idle':
+        break;
+      case 'sending':
+        buttonText = 'SENDING...';
+        break;
+      case 'sent':
+        headerText = 'Thanks!';
+        bodyTextTop = 'You will hear from us soon.';
+        buttonText = 'SENT';
+        break;
+      case 'failed':
+        headerText = 'Oops!';
+        bodyTextTop = 'There was an error processing your submission';
+        bodyTextBottom = 'Please email us at missions@apollo27.com instead';
+        buttonText = 'SENDING FAILED';
+        break;
+      default:
+        break;
+    }
+
     return (
       <Modal
         isOpen={this.state.modalOpen}
@@ -485,8 +521,8 @@ class ModalForm extends React.Component {
             flexDirection: 'column',
           }}
         >
-          <h1 style={{ color: '#FF4242' }}>Drop Us A Line</h1>
-          <p>Fill in your details below, and let us know how we can help.<br />We'll aim to get back to you within 24 hours during the week.</p>
+          <h1 style={{ color: '#FF4242' }}>{headerText}</h1>
+          <p>{bodyTextTop}<br />{bodyTextBottom}</p>
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -504,18 +540,21 @@ class ModalForm extends React.Component {
                 size="32" type="text"
                 placeholder="Name"
                 onChange={(event, value) => this.updateFormComponent(event, 'name')}
+                disabled={disableItems}
               />
               <input
                 className="text-field"
                 size="32" type="text"
                 placeholder="Email Address"
                 onChange={(event, value) => this.updateFormComponent(event, 'email')}
+                disabled={disableItems}
               />
               <input
                 className="text-field"
                 size="32" type="text"
                 placeholder="Telephone (incl. country code)"
                 onChange={(event, value) => this.updateFormComponent(event, 'telephone')}
+                disabled={disableItems}
               />
             </div>
             <textarea
@@ -524,6 +563,7 @@ class ModalForm extends React.Component {
               rows="4"
               placeholder="How can we help?"
               onChange={(event, value) => this.updateFormComponent(event, 'query')}
+              disabled={disableItems}
             />
           </div>
           <FormCharm
@@ -535,7 +575,12 @@ class ModalForm extends React.Component {
             }}
             callback={type => this.formCallback(type)}
           >
-            <div className="submit-button">SUBMIT</div>
+            <div
+              className="submit-button"
+              onClick={() => this.submissionInProgress()}
+            >
+              {buttonText}
+            </div>
           </FormCharm>
         </div>
       </Modal>

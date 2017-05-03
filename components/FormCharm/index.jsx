@@ -10,8 +10,8 @@ export default class FormCharm extends React.Component {
 
     const callback = this.props.callback || null;
 
-    ParseClient(submissionData, () => {
-      console.log('callback');
+    ParseClient(submissionData, (response) => {
+      callback(response);
     });
     /*
     Restler.post('https://api.formcharm.com/1/functions/a27Send', {

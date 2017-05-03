@@ -5,6 +5,21 @@ $font-family-brand: 'Righteous', 'Roboto', Arial, sans-serif;
 $font-family-header: 'Open Sans', Helvetica, sans-serif;
 $font-family-body: 'Bitter', 'Roboto Slab', Georgia, serif;
 
+
+input, select {
+    color: $apollo-red;
+}
+
+input:focus {
+    color: $apollo-red;
+}
+
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
+    border-color: RGBA(255, 66, 66, 0.80);
+    box-shadow: 0 1px 1px rgba(10, 10, 10, 0.075) inset, 0 0 8px RGBA(255, 66, 66, 0.60);
+    outline: 0 none;
+}
+
 p {
     font-family: $font-family-body;
     color: #444;
@@ -647,4 +662,36 @@ footer.siteFooter {
   margin-bottom: 0;
   line-height: 0.9rem;
   text-decoration: underline;
+}
+
+// REACT-MODAL CLASSES
+
+.modal-overlay {
+  position: 'fixed';
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: 'rgba(255, 255, 255, 0.75)';
+}
+
+.submit-button {
+  border: 3px solid $apollo-red;
+  border-radius: 0.2rem;
+  padding: 0.2rem 1rem;
+  font-family: $font-family-header;
+  font-weight: bold;
+  color: $apollo-red;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: $apollo-red;
+  color: white;
+}
+
+.text-field {
+  margin-bottom: 0.5rem;
 }

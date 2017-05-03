@@ -13,6 +13,8 @@ import { Link, Element } from 'react-scroll';
 
 import Reveal from 'react-reveal';
 
+import Modal from 'react-modal';
+
 import Starfield from '../components/Starfield';
 import TypistCycle from '../components/TypistCycle';
 
@@ -513,6 +515,71 @@ export default class Index extends React.Component {
         <Element name="clients_pane" className="element">
           <ClientsPane />
         </Element>
+        <Modal
+          isOpen
+          contentLabel="Modal"
+          style={{
+            overlay: {
+              zIndex: 200000,
+            },
+            content: {
+              top: '120px',
+              bottom: '120px',
+              left: '10vw',
+              right: '10vw',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+            }
+          }}
+        >
+          <div
+            style={{
+              right: '13vw',
+              top: '160px',
+              position: 'fixed',
+              fontFamily: 'Arial, sans-serif',
+              fontWeight: 'bold',
+              fontSize: '2rem',
+              cursor: 'pointer',
+              color: '#FF4242',
+            }}
+            onClick={() => this.closeModal()}
+          >
+            X
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+            }}
+          >
+            <h1 style={{ color: '#FF4242' }}>Drop Us A Line</h1>
+            <p>Fill in your details below, and let us know how we can help.<br />We'll aim to get back to you within 24 hours during the week.</p>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                marginRight: '1.4rem',
+              }}>
+                <input className="text-field" size="32" type="text" placeholder="Name" />
+                <input className="text-field" size="32" type="text" placeholder="Email Address" />
+                <input className="text-field" size="32" type="text" placeholder="Telephone (incl. country code)" />
+              </div>
+              <textarea className="text-field" cols="31" rows="4" placeholder="How can we help?" />
+            </div>
+            <div className="submit-button">SUBMIT</div>
+          </div>
+        </Modal>
         <UnderDevelopmentSign />
       </StickyContainer>
     );

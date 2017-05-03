@@ -73,6 +73,7 @@ react	package.json	/^    "react": "^15.4.2",$/;"	f
 react-cursor-position	package.json	/^    "react-cursor-position": "^1.3.6",$/;"	f
 react-headroom	package.json	/^    "react-headroom": "^2.1.2",$/;"	f
 react-helmet	package.json	/^    "react-helmet": "^3.2.2",$/;"	f
+react-modal	package.json	/^    "react-modal": "^1.7.7",$/;"	f
 react-responsive-grid	package.json	/^    "react-responsive-grid": "^0.3.3",$/;"	f
 react-reveal	package.json	/^    "react-reveal": "^0.1.1",$/;"	f
 react-scroll	package.json	/^    "react-scroll": "^1.4.7",$/;"	f

@@ -17,6 +17,7 @@ import Modal from 'react-modal';
 
 import Starfield from '../components/Starfield';
 import TypistCycle from '../components/TypistCycle';
+import FormCharm from '../components/FormCharm'; // Custom, alpha variant of FC
 
 import './styles.scss';
 import '../node_modules/react-typist/dist/Typist.css';
@@ -145,7 +146,6 @@ WidthMaster.propTypes = {
 
 function StickyNav(props) {
   const linkOffset = props.windowDimensions.height * -0.1;
-  console.log(`link offset: ${linkOffset}`);
 
   return (
     <Sticky
@@ -193,14 +193,20 @@ function StickyNav(props) {
           >
             Clients
           </Link>
-          <a className="navItem contact">Contact&nbsp;Us</a>
+          <a
+            onClick={() => props.contactOpen()}
+            className="navItem contact"
+          >
+            Contact&nbsp;Us
+          </a>
         </nav>
       </WidthMaster>
     </Sticky>
   );
 }
 StickyNav.propTypes = {
-  windowDimensions: React.PropTypes.object.required,
+  windowDimensions: React.PropTypes.object.isRequired,
+  contactOpen: React.PropTypes.func.isRequired,
 };
 
 function IntroPane() {
@@ -306,8 +312,6 @@ function SlideIcon(props) {
     'fadeInLeft',
   ];
 
-  console.log(`animation ${animation[0]}`);
-
   let layout = [
     (<Reveal key={animation[0]} style={{zIndex: 0}} className="one-two-icon" effect={`animated ${animation[0]}`}>
       <img src={props.icon} alt="clients_image" />
@@ -384,6 +388,165 @@ function UnderDevelopmentSign() {
   );
 }
 
+class ModalForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      telephone: '',
+      query: '',
+      formStatus: 'none',
+      modalOpen: this.props.open,
+    };
+
+    this.formCallback = this.formCallback.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.updateFormComponent = this.updateFormComponent.bind(this);
+  }
+
+  formCallback(type) {
+    if (type === 'error') {
+      this.setState({
+        formStatus: 'failed',
+      });
+    } else {
+      this.setState({
+        formStatus: 'sent',
+      });
+      window.alert('SENT SUCCESSFULLY!');
+    }
+  }
+
+  closeModal() {
+    this.props.onClose();
+    this.setState({
+      modalOpen: false,
+    });
+  }
+
+  updateFormComponent(event, component) {
+    const value = event.target.value;
+
+    console.log('should update component %s with value %s', component, value);
+
+    this.setState({
+      [component]: value
+    });
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      modalOpen: props.open,
+    });
+  }
+
+  render() {
+    return (
+      <Modal
+        isOpen={this.state.modalOpen}
+        contentLabel="Modal"
+        style={{
+          overlay: {
+            zIndex: 200000,
+          },
+          content: {
+            top: '120px',
+            bottom: '120px',
+            left: '10vw',
+            right: '10vw',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+          }
+        }}
+      >
+        <div
+          style={{
+            right: '13vw',
+            top: '160px',
+            position: 'fixed',
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            fontSize: '2rem',
+            cursor: 'pointer',
+            color: '#FF4242',
+          }}
+          onClick={() => this.closeModal()}
+        >
+          X
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <h1 style={{ color: '#FF4242' }}>Drop Us A Line</h1>
+          <p>Fill in your details below, and let us know how we can help.<br />We'll aim to get back to you within 24 hours during the week.</p>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+              marginRight: '1.4rem',
+            }}>
+              <input
+                className="text-field"
+                size="32" type="text"
+                placeholder="Name"
+                onChange={(event, value) => this.updateFormComponent(event, 'name')}
+              />
+              <input
+                className="text-field"
+                size="32" type="text"
+                placeholder="Email Address"
+                onChange={(event, value) => this.updateFormComponent(event, 'email')}
+              />
+              <input
+                className="text-field"
+                size="32" type="text"
+                placeholder="Telephone (incl. country code)"
+                onChange={(event, value) => this.updateFormComponent(event, 'telephone')}
+              />
+            </div>
+            <textarea
+              className="text-field"
+              cols="31"
+              rows="4"
+              placeholder="How can we help?"
+              onChange={(event, value) => this.updateFormComponent(event, 'query')}
+            />
+          </div>
+          <FormCharm
+            data={{
+              name: this.state.name,
+              email: this.state.email,
+              telephone: this.state.telephone,
+              query: this.state.query,
+            }}
+            callback={type => this.formCallback(type)}
+          >
+            <div className="submit-button">SUBMIT</div>
+          </FormCharm>
+        </div>
+      </Modal>
+    );
+  }
+}
+ModalForm.propTypes = {
+  open: React.PropTypes.bool.isRequired,
+  onClose: React.PropTypes.func.isRequired,
+};
+
 export default class Index extends React.Component {
 
   constructor(props) {
@@ -401,6 +564,7 @@ export default class Index extends React.Component {
           width: window.innerWidth,
           height: window.innerHeight,
         },
+        contactOpen: false,
       };
     } else {
       this.state = {
@@ -470,7 +634,10 @@ export default class Index extends React.Component {
             {canvas}
           </StarfieldEnclosure>
         </div>
-        <StickyNav windowDimensions={this.state.windowDimensions || { width: 0, height: 0 }} />
+        <StickyNav
+          windowDimensions={this.state.windowDimensions || { width: 0, height: 0 }}
+          contactOpen={() => this.setState({ contactOpen: true })}
+        />
         <Element name="intro_pane" className="element">
           <IntroPane />
         </Element>
@@ -515,71 +682,10 @@ export default class Index extends React.Component {
         <Element name="clients_pane" className="element">
           <ClientsPane />
         </Element>
-        <Modal
-          isOpen
-          contentLabel="Modal"
-          style={{
-            overlay: {
-              zIndex: 200000,
-            },
-            content: {
-              top: '120px',
-              bottom: '120px',
-              left: '10vw',
-              right: '10vw',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-            }
-          }}
-        >
-          <div
-            style={{
-              right: '13vw',
-              top: '160px',
-              position: 'fixed',
-              fontFamily: 'Arial, sans-serif',
-              fontWeight: 'bold',
-              fontSize: '2rem',
-              cursor: 'pointer',
-              color: '#FF4242',
-            }}
-            onClick={() => this.closeModal()}
-          >
-            X
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column',
-            }}
-          >
-            <h1 style={{ color: '#FF4242' }}>Drop Us A Line</h1>
-            <p>Fill in your details below, and let us know how we can help.<br />We'll aim to get back to you within 24 hours during the week.</p>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                marginRight: '1.4rem',
-              }}>
-                <input className="text-field" size="32" type="text" placeholder="Name" />
-                <input className="text-field" size="32" type="text" placeholder="Email Address" />
-                <input className="text-field" size="32" type="text" placeholder="Telephone (incl. country code)" />
-              </div>
-              <textarea className="text-field" cols="31" rows="4" placeholder="How can we help?" />
-            </div>
-            <div className="submit-button">SUBMIT</div>
-          </div>
-        </Modal>
+        <ModalForm
+          open={this.state.contactOpen}
+          onClose={() => this.setState({ contactOpen: false })}
+        />
         <UnderDevelopmentSign />
       </StickyContainer>
     );

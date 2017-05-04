@@ -478,6 +478,8 @@ class ModalForm extends React.Component {
         break;
     }
 
+    const buttonStyle = (disableItems) ? {opacity: '0.6', pointerEvents: 'none'} : {};
+
     return (
       <Modal
         isOpen={this.state.modalOpen}
@@ -578,6 +580,7 @@ class ModalForm extends React.Component {
             <div
               className="submit-button"
               onClick={() => this.submissionInProgress()}
+              style={buttonStyle}
             >
               {buttonText}
             </div>

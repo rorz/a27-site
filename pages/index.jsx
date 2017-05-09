@@ -41,6 +41,8 @@ import graphicsIcon from './graphics-icon.png';
 import webIcon from './web-icon.png';
 import mobileIcon from './mobile-icon.png';
 import brandingIcon from './branding-icon.png';
+
+import ogImage from './og-image.png';
 // const Scroll = require('react-scroll');
 //
 // const Link = Scroll.Link;
@@ -665,10 +667,19 @@ export default class Index extends React.Component {
           title={config.siteTitle} meta={[
             {
               name: 'description',
-              content: 'Sample',
+              content: 'Apollo27 — creators of digital experiences.',
             }, {
               name: 'keywords',
-              content: 'sample, something',
+              content: 'apollo27, web, design, graphics, freelance',
+            }, {
+              name: 'og:title',
+              content: 'Apollo27 | Digital Design',
+            }, {
+              name: 'og:description',
+              content: 'Creators of digital experiences.',
+            }, {
+              name: 'og:image',
+              content: ogImage,
             },
           ]}
         />

@@ -5,6 +5,10 @@ import { prefixLink } from 'gatsby-helpers'
 import { TypographyStyle, GoogleFont } from 'react-typography'
 import typography from './utils/typography'
 
+import favicon32 from './pages/favicon-32x32.png'
+import favicon16 from './pages/favicon-16x16.png'
+import favicon from './pages/favicon.ico'
+
 const BUILD_TIME = new Date().getTime()
 
 module.exports = React.createClass({
@@ -32,6 +36,8 @@ module.exports = React.createClass({
           />
           {head.title.toComponent()}
           {head.meta.toComponent()}
+          <link rel="icon" type="image/png" href={favicon32} sizes="32x32" />
+          <link rel="icon" type="image/png" href={favicon16} sizes="16x16" />
           <TypographyStyle typography={typography} />
           <GoogleFont typography={typography} />
           {css}

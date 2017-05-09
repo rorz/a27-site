@@ -314,8 +314,11 @@ function SlideIcon(props) {
     'fadeInLeft',
   ];
 
+  const title = props.link ? <a className="titleLink" href={props.link}>{props.title}</a>
+  : <span>{props.title}</span>;
+
   let layout = [
-    (<Reveal key={animation[0]} style={{zIndex: 0}} className="one-two-icon" effect={`animated ${animation[0]}`}>
+    (<Reveal key={animation[0]} style={{ zIndex: 0 }} className="one-two-icon" effect={`animated ${animation[0]}`}>
       <img src={props.icon} alt="clients_image" />
     </Reveal>),
     (<Reveal key={animation[1]} className="one-two-para" effect={`animated ${animation[1]}`}>
@@ -325,7 +328,7 @@ function SlideIcon(props) {
           padding: (invert ? '1rem 3rem 2rem 0' : '1rem 0 2rem 3rem'),
         }}
       >
-        <h3>{props.title}</h3>
+        <h3>{title}</h3>
         <h4>{props.subtitle}</h4>
         <p>{props.description}</p>
       </div>
@@ -346,6 +349,7 @@ function SlideIcon(props) {
 SlideIcon.propTypes = {
   invert: PropTypes.bool,
   title: PropTypes.string.isRequired,
+  link: PropTypes.string,
   subtitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
@@ -359,12 +363,14 @@ function ClientsPane() {
         <h2>Some things we&apos;ve built:</h2>
         <SlideIcon
           title="SkyMining®"
+          link="https://skymining.com"
           subtitle="Web | Documents | Presentations | Branding | Graphics"
           description="SkyMining is the world's first commerical solution for removing CO2 from the atmosphere, and turning it into a clean, renewable fuel. Apollo27 worked on SkyMining in a 3-year partnership that involved working on all aspects of the business case, including its launch website, business plan, and investor material."
           icon={mockupSM}
         />
         <SlideIcon
           title="EcoServices"
+          link="https://ecoservices.se"
           subtitle="Web | Graphics | Branding"
           description="EcoServices is a Swedish energy startup, enabling companies to increase both energy efficiency and profits by turning previously large capital investments into service-solutions. Apollo27 created their new bilingual launch site, as well as working on framing."
           icon={mockupECO}

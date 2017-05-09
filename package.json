@@ -12,6 +12,7 @@
     "gatsby": "^0.12.36",
     "highlight.js": "^9.8.0",
     "history": "^2.0.2",
+    "jpegtran": "^1.0.5",
     "js-yaml": "^3.8.1",
     "markdown-it": "^7.0.1",
     "markdown-it-abbr": "^1.0.3",

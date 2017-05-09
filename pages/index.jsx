@@ -679,7 +679,7 @@ export default class Index extends React.Component {
               content: 'Creators of digital experiences.',
             }, {
               name: 'og:image',
-              content: './og-image.png',
+              content: 'https://apollo27.com/og-image.png',
             },
           ]}
         />

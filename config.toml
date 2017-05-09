@@ -1,2 +1,7 @@
-siteTitle="Gatsby Starter Site"
+siteTitle = "Apollo27"
+siteDescr = "Digital Experience Creators"
+siteAuthor = "Apollo27 LTD"
+
+googleAnalyticsId = "UA-96989011-1"
+
 linkPrefix = "/gatsby-starter-default"
